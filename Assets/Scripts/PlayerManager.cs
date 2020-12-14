@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
+                characterList[i].GetComponent<CharacterBase>().StopMovement();
                 characterList[i].GetComponent<CharacterBase>().enabled = false;
             }
         }
@@ -52,6 +53,7 @@ public class PlayerManager : MonoBehaviour
         isActive = false;
         for (int i = 0; i < characterList.Length; i++)
         {
+            characterList[i].GetComponent<CharacterBase>().StopMovement();
             characterList[i].GetComponent<CharacterBase>().enabled = false;
         }
     }

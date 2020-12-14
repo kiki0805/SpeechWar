@@ -56,10 +56,18 @@ public class CharacterBase : MonoBehaviour
         //transform.position += moveDirection * speed;
     }
 
+    public void StopMovement()
+    {
+        if(rb != null)
+            rb.velocity = new Vector2(0f, 0f);
+    }
+
     void FixedUpdate()
     {
         if (mode)
             rb.velocity = new Vector2(xDirection, yDirection);
+        else
+            rb.velocity = new Vector2(0f, 0f);
     }
 
     // Move direction on the map
