@@ -1626,6 +1626,7 @@ GameObject:
   - component: {fileID: 737870909}
   - component: {fileID: 737870908}
   - component: {fileID: 737870910}
+  - component: {fileID: 737870911}
   m_Layer: 0
   m_Name: p2-allround
   m_TagString: Untagged
@@ -1742,6 +1743,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8269231}
   m_EdgeRadius: 0
+--- !u!50 &737870911
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737870906}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &859574807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1813,7 @@ GameObject:
   - component: {fileID: 1109516690}
   - component: {fileID: 1109516689}
   - component: {fileID: 1109516691}
+  - component: {fileID: 1109516692}
   m_Layer: 0
   m_Name: p1-tank
   m_TagString: Untagged
@@ -1907,6 +1930,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9423077, y: 0.8269231}
   m_EdgeRadius: 0
+--- !u!50 &1109516692
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109516687}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1175730999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,6 +2104,7 @@ GameObject:
   - component: {fileID: 1299905824}
   - component: {fileID: 1299905823}
   - component: {fileID: 1299905825}
+  - component: {fileID: 1299905826}
   m_Layer: 0
   m_Name: p1-longranger
   m_TagString: Untagged
@@ -2176,6 +2221,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0384616, y: 0.8269231}
   m_EdgeRadius: 0
+--- !u!50 &1299905826
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299905821}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1300711782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,6 +2254,7 @@ GameObject:
   - component: {fileID: 1300711785}
   - component: {fileID: 1300711784}
   - component: {fileID: 1300711786}
+  - component: {fileID: 1300711787}
   m_Layer: 0
   m_Name: p1-allround
   m_TagString: Untagged
@@ -2304,6 +2371,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8269231}
   m_EdgeRadius: 0
+--- !u!50 &1300711787
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300711782}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1318724205
 GameObject:
   m_ObjectHideFlags: 0
@@ -114970,6 +115058,7 @@ GameObject:
   - component: {fileID: 1488380540}
   - component: {fileID: 1488380539}
   - component: {fileID: 1488380541}
+  - component: {fileID: 1488380542}
   m_Layer: 0
   m_Name: p2-healer
   m_TagString: Untagged
@@ -115086,6 +115175,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.71153843, y: 0.8269231}
   m_EdgeRadius: 0
+--- !u!50 &1488380542
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488380537}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1624152931
 GameObject:
   m_ObjectHideFlags: 0
@@ -115355,6 +115465,7 @@ GameObject:
   - component: {fileID: 1912943391}
   - component: {fileID: 1912943390}
   - component: {fileID: 1912943392}
+  - component: {fileID: 1912943393}
   m_Layer: 0
   m_Name: p2-tank
   m_TagString: Untagged
@@ -115471,6 +115582,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9423077, y: 0.8269231}
   m_EdgeRadius: 0
+--- !u!50 &1912943393
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912943388}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1994167505
 GameObject:
   m_ObjectHideFlags: 0
@@ -115482,8 +115614,8 @@ GameObject:
   - component: {fileID: 1994167506}
   - component: {fileID: 1994167508}
   - component: {fileID: 1994167507}
-  - component: {fileID: 1994167509}
   - component: {fileID: 1994167510}
+  - component: {fileID: 1994167509}
   m_Layer: 0
   m_Name: p1-healer
   m_TagString: Untagged
@@ -115589,12 +115721,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &1994167510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -115633,6 +115765,7 @@ GameObject:
   - component: {fileID: 2106874920}
   - component: {fileID: 2106874919}
   - component: {fileID: 2106874921}
+  - component: {fileID: 2106874922}
   m_Layer: 0
   m_Name: p2-longranger
   m_TagString: Untagged
@@ -115749,3 +115882,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0384616, y: 0.8269231}
   m_EdgeRadius: 0
+--- !u!50 &2106874922
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106874917}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
