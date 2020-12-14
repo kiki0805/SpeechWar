@@ -17,16 +17,19 @@ public class CharacterBase : MonoBehaviour
 
     [SerializeField] private Transform pfBullet;     // Is needed to instantiate bullet objects
     public float speed;
+    float xDirection, yDirection;
     public float rotationSpeed;
     public float range;        // Indicates after how many seconds the bullet disappears
     public int power;          // Indicates how much health a bullet takes
     string moveStatus;  // Will be used for speech control
+    Rigidbody2D rb;
 
     [HideInInspector] public bool mode;              // Whether moving or aiming, true = moving, false = aiming
 
     void Start()
     {
         moveStatus = MoveStatus.Still;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Updates move status, is done in SpeechController
@@ -45,12 +48,18 @@ public class CharacterBase : MonoBehaviour
     // Move x,y position on the map
     private void MovePosition()
     {
-        float xDirection = Input.GetAxis("Horizontal");
-        float yDirection = Input.GetAxis("Vertical");
+        xDirection = Input.GetAxis("Horizontal");
+        yDirection = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = new Vector3(xDirection, yDirection, 0.0f);
+       // Vector3 moveDirection = new Vector3(xDirection, yDirection, 0.0f);
 
-        transform.position += moveDirection * speed;
+        //transform.position += moveDirection * speed;
+    }
+
+    void FixedUpdate()
+    {
+        if (mode)
+            rb.velocity = new Vector2(xDirection, yDirection);
     }
 
     // Move direction on the map
