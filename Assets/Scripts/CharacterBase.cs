@@ -103,7 +103,11 @@ public class CharacterBase : MonoBehaviour
         Vector3 currentPosition = transform.position + (transform.right * 1); // Spawn bullet in front of character, 1 might be subject to change
         Transform bulletTransform = Instantiate(pfBullet, currentPosition, Quaternion.identity); // Create new bullet prefab
 
-        Quaternion bulletDirection = transform.localRotation;
+        // Calculate bullet movement direction from knowing z-rotation (magnitude of angle in unit circle)
+        float z = transform.localRotation.eulerAngles.z;     // Get rotation around z-axis as Euler angles in degrees
+        float y = Mathf.Sin(z * Mathf.Deg2Rad);              // Mathf.Sin and Mathf.Cos both calculate from radians
+        float x = Mathf.Cos(z * Mathf.Deg2Rad);              // so we need to convert first
+        Vector3 bulletDirection = new Vector3(x, y, z);
         bulletTransform.GetComponent<BulletShot>().Setup(bulletDirection, range, power);
     }
 
