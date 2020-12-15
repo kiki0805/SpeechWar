@@ -34,12 +34,16 @@ public class CharacterBase : MonoBehaviour
         moveStatus = MoveStatus.Still;
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponentInParent<PlayerManager>();
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void SetActive()
     {
         if (dead) return;
         isActive = true;
+        if (m_SpriteRenderer is null)
+            m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_SpriteRenderer.color = Color.red;
     }
 
     public void SetInactive()
@@ -47,6 +51,8 @@ public class CharacterBase : MonoBehaviour
         isActive = false;
         UpdateMoveStatus(MoveStatus.Still);
         StopMovement();
+        if (dead) return;
+        m_SpriteRenderer.color = Color.white;
     }
 
     public void Shot()
@@ -63,7 +69,6 @@ public class CharacterBase : MonoBehaviour
     private void Die()
     {
         dead = true;
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_SpriteRenderer.color = Color.grey;
     }
 
