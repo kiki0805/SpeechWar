@@ -22,6 +22,11 @@ public class SpeechController : MonoBehaviour
 
     public void RefreshController()
     {
+
+        if (gameManager is null)
+        {
+            gameManager = GetComponentInParent<GameManager>();
+        }
         controller = gameManager.GetComponent<GameManager>().GetActivePlayer().GetComponent<PlayerManager>();
     }
 
