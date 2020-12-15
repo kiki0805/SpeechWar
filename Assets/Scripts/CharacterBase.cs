@@ -15,7 +15,6 @@ public static class MoveStatus
 public class CharacterBase : MonoBehaviour
 {
 
-    [SerializeField] private Transform pfBullet;     // Is needed to instantiate bullet objects
     public float speed;
     float xDirection, yDirection;
     public float rotationSpeed;
@@ -23,11 +22,14 @@ public class CharacterBase : MonoBehaviour
     public int power;          // Indicates how much health a bullet takes
     string moveStatus;  // Will be used for speech control
     Rigidbody2D rb;
+    public bool isHealer;                           // Check if healer or not
     bool isActive = false;
     PlayerManager manager;
-    public float healthAmount = 1.0f;
+    public float health = 1.0f;
     public bool dead = false;
     SpriteRenderer m_SpriteRenderer;
+    [SerializeField] private Transform pfBullet;    // Is needed to instantiate bullet objects
+    public GameManager gameManager;
 
     void Start()
     {
@@ -53,17 +55,6 @@ public class CharacterBase : MonoBehaviour
         StopMovement();
         if (dead) return;
         m_SpriteRenderer.color = Color.white;
-    }
-
-    public void Shot()
-    {
-        if (dead) return;
-        healthAmount -= 0.1f;
-        if (healthAmount <= 0)
-        {
-            Die();
-            SetInactive();
-        }
     }
 
     private void Die()
@@ -171,7 +162,13 @@ public class CharacterBase : MonoBehaviour
 
     public void ShootBullet()
     {
-        Vector3 currentPosition = transform.position + (transform.right * 1); // Spawn bullet in front of character, 1 might be subject to change
+        if (gameManager is null)
+        {
+            gameManager = GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>();
+        }
+        gameManager.EndTurn();
+
+        Vector3 currentPosition = transform.position + (transform.right * (float)0.30); // Spawn bullet in front of character, 1 might be subject to change
         Transform bulletTransform = Instantiate(pfBullet, currentPosition, Quaternion.identity); // Create new bullet prefab
 
         // Calculate bullet movement direction from knowing z-rotation (magnitude of angle in unit circle)
@@ -179,7 +176,30 @@ public class CharacterBase : MonoBehaviour
         float y = Mathf.Sin(z * Mathf.Deg2Rad);              // Mathf.Sin and Mathf.Cos both calculate from radians
         float x = Mathf.Cos(z * Mathf.Deg2Rad);              // so we need to convert first
         Vector3 bulletDirection = new Vector3(x, y, z);
-        bulletTransform.GetComponent<BulletShot>().Setup(bulletDirection, range, power);
+        bulletTransform.GetComponent<BulletShot>().Setup(bulletDirection, range, power, !isHealer); // if isHealer = true => !isHealer = false => isBullet = false
+    }
+
+    /* Adjust character health accordingly */
+    public void ChangeCharacterHealth(bool isBullet, int power)
+    {
+        if (dead) return;
+        
+        if (isBullet)
+        {
+            health -= 0.1f;//power;
+            //Debug.Log("Character hit! Health is now: " + health);
+        }
+        else
+        {
+            health += 0.1f;//power;
+            //Debug.Log("Character healed! Health is now: " + health);
+        }
+
+        if (health <= 0)
+        {
+            Die();
+            SetInactive();
+        }
     }
 
     void Update()
@@ -189,6 +209,7 @@ public class CharacterBase : MonoBehaviour
             return;
         }
         MoveCharacter();
+        if (manager.speechInput) return;
         if (Input.GetKeyDown(KeyCode.Return))
         {
             ShootBullet();

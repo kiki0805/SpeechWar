@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     public GameObject player2;
     GameObject activePlayer;
 
-    private const float TIME_PER_ROUND = 10;        // In seconds
+    private const float TIME_PER_ROUND = 120;        // In seconds
     private float time = TIME_PER_ROUND;
     public Text timerDisplay;                       // Reference to timer text object in engine
     public Text playerDisplay;
     SpeechController speechController;
+    Coroutine lastRoutine;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
         playerDisplay.text = "Turn: Player 1";
 
         // Start timer
-        StartCoroutine(CountdownRoundTimer());
+        lastRoutine = StartCoroutine(CountdownRoundTimer());
     }
 
     public GameObject GetActivePlayer()
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     // Method for changing active player
     private void ChangePlayer()
     {
-        if(activePlayer == player1)
+        if (activePlayer == player1)
         {
             player1.GetComponent<PlayerManager>().SetInactive();
             player2.GetComponent<PlayerManager>().SetActive();
@@ -69,6 +70,23 @@ public class GameManager : MonoBehaviour
         }
         ChangePlayer();
         time = TIME_PER_ROUND;                      // Reset timer and start over
-        StartCoroutine(CountdownRoundTimer());  
+        lastRoutine = StartCoroutine(CountdownRoundTimer());
+    }
+
+    public void EndTurn()
+    {
+        StopCoroutine(lastRoutine);
+        timerDisplay.text = "Waiting";
+
+        // Inactivate activePlayer
+        activePlayer.GetComponent<PlayerManager>().SetInactive();
+    }
+
+    /* Method to start turn when bullet destroyed */
+    public void StartTurn()
+    {
+        ChangePlayer();
+        time = TIME_PER_ROUND;
+        lastRoutine = StartCoroutine(CountdownRoundTimer());
     }
 }
