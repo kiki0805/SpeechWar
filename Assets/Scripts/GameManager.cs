@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     public GameObject player2;
     GameObject activePlayer;
 
-    private const float TIME_PER_ROUND = 10;        // In seconds
+    private const float TIME_PER_ROUND = 20;        // In seconds
     private float time = TIME_PER_ROUND;
     public Text timerDisplay;                       // Reference to timer text object in engine
     public Text playerDisplay;
+    SpeechController speechController;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +24,18 @@ public class GameManager : MonoBehaviour
         player2.GetComponent<PlayerManager>().SetInactive();
         activePlayer = player1;
 
+        speechController = GetComponentInChildren<SpeechController>();
+        speechController.RefreshController();
+
         playerDisplay.text = "Turn: Player 1";
 
         // Start timer
         StartCoroutine(CountdownRoundTimer());
+    }
+
+    public GameObject GetActivePlayer()
+    {
+        return activePlayer;
     }
 
     // Method for changing active player
@@ -46,7 +55,7 @@ public class GameManager : MonoBehaviour
             activePlayer = player1;
             playerDisplay.text = "Turn: Player 1";
         }
-        
+        speechController.RefreshController();
     }
 
     // Method for counting down and displaying it on screen

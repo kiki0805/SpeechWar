@@ -9,7 +9,7 @@ public static class MoveStatus
     public const string Left = "left";
     public const string Right = "right";
     public const string Up = "up";
-    public const string Down = "down";
+    public const string Down = "below";
 }
 
 public class CharacterBase : MonoBehaviour
@@ -23,20 +23,33 @@ public class CharacterBase : MonoBehaviour
     public int power;          // Indicates how much health a bullet takes
     string moveStatus;  // Will be used for speech control
     Rigidbody2D rb;
-
+    bool isActive = false;
     [HideInInspector] public bool mode;              // Whether moving or aiming, true = moving, false = aiming
+    PlayerManager manager;
 
     void Start()
     {
         moveStatus = MoveStatus.Still;
         rb = GetComponent<Rigidbody2D>();
+        manager = GetComponentInParent<PlayerManager>();
+    }
+
+    public void SetActive()
+    {
+        isActive = true;
+    }
+
+    public void SetInactive()
+    {
+        isActive = false;
+        UpdateMoveStatus(MoveStatus.Still);
     }
 
     // Updates move status, is done in SpeechController
     public void UpdateMoveStatus(string status)
     {
         moveStatus = status;
-        Debug.Log("Updated moveStatus to " + status);
+        Debug.Log("Updated moveStatus to " + moveStatus);
     }
 
     // Method to switch between aiming and moving
@@ -48,10 +61,43 @@ public class CharacterBase : MonoBehaviour
     // Move x,y position on the map
     private void MovePosition()
     {
-        xDirection = Input.GetAxis("Horizontal");
-        yDirection = Input.GetAxis("Vertical");
+        if (!manager.speechInput)
+        {
+            xDirection = Input.GetAxis("Horizontal");
+            yDirection = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            switch (moveStatus)
+            {
+                case MoveStatus.Still:
+                    xDirection = 0;
+                    yDirection = 0;
+                    break;
+                case MoveStatus.Right:
+                    xDirection = 1;
+                    yDirection = 0;
+                    break;
+                case MoveStatus.Left:
+                    xDirection = -1;
+                    yDirection = 0;
+                    break;
+                case MoveStatus.Up:
+                    xDirection = 0;
+                    yDirection = 1;
+                    break;
+                case MoveStatus.Down:
+                    xDirection = 0;
+                    yDirection = -1;
+                    break;
+                default:
+                    xDirection = 0;
+                    yDirection = 0;
+                    break;
+            }
+        }
 
-       // Vector3 moveDirection = new Vector3(xDirection, yDirection, 0.0f);
+        // Vector3 moveDirection = new Vector3(xDirection, yDirection, 0.0f);
 
         //transform.position += moveDirection * speed;
     }
@@ -109,6 +155,7 @@ public class CharacterBase : MonoBehaviour
 
     void Update()
     {
+        if (!isActive) return;
         MoveCharacter();
         if (Input.GetKeyDown(KeyCode.Return))
         {

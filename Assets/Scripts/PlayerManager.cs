@@ -7,55 +7,35 @@ public class PlayerManager : MonoBehaviour
     public GameObject[] characterList;
     public bool speechInput;
     bool isActive;           // Keep track if this object active or not
-    private int activeCharacter;
+    private int activeCharacter = 0;
+
+    public void UpdateCharacterMoveStatus(string status)
+    {
+        characterList[activeCharacter].GetComponent<CharacterBase>().UpdateMoveStatus(status);
+    }
 
     private void SwitchCharacter()
     {
-        for (int i = 0; i < characterList.Length; i++)
-        {
-            if(i == activeCharacter)
-            {
-                characterList[i].GetComponent<CharacterBase>().enabled = true;
-            }
-            else
-            {
-                characterList[i].GetComponent<CharacterBase>().StopMovement();
-                characterList[i].GetComponent<CharacterBase>().enabled = false;
-            }
-        }
+        characterList[activeCharacter].GetComponent<CharacterBase>().SetInactive();
         activeCharacter = (activeCharacter + 1) % 4;
+        characterList[activeCharacter].GetComponent<CharacterBase>().SetActive();
     }
 
     void Start()
     {
-        activeCharacter = 0;
-        if (isActive)
-        {
-            SwitchCharacter();
-        }
-        else
-        {
-            for (int i = 0; i < characterList.Length; i++)
-            {
-                characterList[i].GetComponent<CharacterBase>().enabled = false;
-            }
-        }
+        //SwitchCharacter();
     }
 
     public void SetActive()
     {
         isActive = true;
-        SwitchCharacter();
+        characterList[activeCharacter].GetComponent<CharacterBase>().SetActive();
     }
 
     public void SetInactive()
     {
         isActive = false;
-        for (int i = 0; i < characterList.Length; i++)
-        {
-            characterList[i].GetComponent<CharacterBase>().StopMovement();
-            characterList[i].GetComponent<CharacterBase>().enabled = false;
-        }
+        characterList[activeCharacter].GetComponent<CharacterBase>().SetInactive();
     }
 
     void Update()
