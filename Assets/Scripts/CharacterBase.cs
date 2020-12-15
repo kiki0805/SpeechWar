@@ -26,6 +26,9 @@ public class CharacterBase : MonoBehaviour
     bool isActive = false;
     [HideInInspector] public bool mode;              // Whether moving or aiming, true = moving, false = aiming
     PlayerManager manager;
+    public float healthAmount = 1.0f;
+    public bool dead = false;
+    SpriteRenderer m_SpriteRenderer;
 
     void Start()
     {
@@ -36,6 +39,7 @@ public class CharacterBase : MonoBehaviour
 
     public void SetActive()
     {
+        if (dead) return;
         isActive = true;
     }
 
@@ -43,6 +47,25 @@ public class CharacterBase : MonoBehaviour
     {
         isActive = false;
         UpdateMoveStatus(MoveStatus.Still);
+        StopMovement();
+    }
+
+    public void Shot()
+    {
+        if (dead) return;
+        healthAmount -= 0.1f;
+        if (healthAmount <= 0)
+        {
+            Die();
+            SetInactive();
+        }
+    }
+
+    private void Die()
+    {
+        dead = true;
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_SpriteRenderer.color = Color.grey;
     }
 
     // Updates move status, is done in SpeechController
@@ -104,7 +127,9 @@ public class CharacterBase : MonoBehaviour
 
     public void StopMovement()
     {
-        if(rb != null)
+        xDirection = 0;
+        yDirection = 0;
+        if (rb != null)
             rb.velocity = new Vector2(0f, 0f);
     }
 
@@ -159,7 +184,10 @@ public class CharacterBase : MonoBehaviour
 
     void Update()
     {
-        if (!isActive) return;
+        if (!isActive)
+        {
+            return;
+        }
         MoveCharacter();
         if (Input.GetKeyDown(KeyCode.Return))
         {

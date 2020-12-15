@@ -59,6 +59,13 @@ public class BulletShot : MonoBehaviour
         }
         else if(collisionObject.transform.CompareTag("Character"))
         {
+            CharacterBase character = collisionObject.collider.GetComponent<CharacterBase>();
+
+            if (character == null) return;
+            if (character.dead) return;
+            character.Shot();
+            Destroy(gameObject);
+
             // Adjust character health accordingly
         }
     }

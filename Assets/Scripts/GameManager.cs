@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject player2;
     GameObject activePlayer;
 
-    private const float TIME_PER_ROUND = 20;        // In seconds
+    private const float TIME_PER_ROUND = 10;        // In seconds
     private float time = TIME_PER_ROUND;
     public Text timerDisplay;                       // Reference to timer text object in engine
     public Text playerDisplay;
