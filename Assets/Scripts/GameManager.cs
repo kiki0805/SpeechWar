@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     public GameObject player2;
     GameObject activePlayer;
 
-    private const float TIME_PER_ROUND = 20;        // In seconds
+    private const float TIME_PER_ROUND = 120;        // In seconds
     private float time = TIME_PER_ROUND;
     public Text timerDisplay;                       // Reference to timer text object in engine
     public Text playerDisplay;
     SpeechController speechController;
+    Coroutine lastRoutine;
 
     /* Setup */
     void Start()
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Start timer
-        StartCoroutine(CountdownRoundTimer());
+        lastRoutine = StartCoroutine(CountdownRoundTimer());
     }
 
     /*  Method for getting the active player
@@ -61,20 +62,42 @@ public class GameManager : MonoBehaviour
             activePlayer = player1;
             playerDisplay.text = "Turn: Player 1";
         }
-        speechController.RefreshController();
+
+        if (activePlayer.GetComponent<PlayerManager>().speechInput)
+        {
+            speechController.RefreshController();
+        }
     }
 
     // Method for counting down and displaying it on screen
     IEnumerator CountdownRoundTimer()
     {
-        while (time > 0)
+        while (time > 0)                            // While time left for round
         {
             timerDisplay.text = time.ToString();
             yield return new WaitForSeconds(1f);
             time--;
         }
-        ChangePlayer();
+        ChangePlayer();                             // Change player when round ends
         time = TIME_PER_ROUND;                      // Reset timer and start over
-        StartCoroutine(CountdownRoundTimer());  
+        lastRoutine = StartCoroutine(CountdownRoundTimer());  
+    }
+
+    /* Method to end turn prematurely */
+    public void EndTurn()
+    {
+        StopCoroutine(lastRoutine);
+        timerDisplay.text = "Waiting";
+
+        // Inactivate activePlayer
+        activePlayer.GetComponent<PlayerManager>().SetInactive();
+    }
+
+    /* Method to start turn when bullet destroyed */
+    public void StartTurn()
+    {
+        ChangePlayer();
+        time = TIME_PER_ROUND;
+        lastRoutine = StartCoroutine(CountdownRoundTimer());
     }
 }

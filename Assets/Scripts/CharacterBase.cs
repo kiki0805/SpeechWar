@@ -5,7 +5,7 @@ using UnityEngine;
 /* Separate class for speech input */
 public static class MoveStatus
 {
-    public const string Still = "stop";
+    public const string Still = "still";
     public const string Left = "left";
     public const string Right = "right";
     public const string Up = "up";
@@ -23,6 +23,7 @@ public class CharacterBase : MonoBehaviour
     public float range;                             // Indicates after how many seconds the bullet disappears
     public int power;                               // Indicates how much health a bullet takes
     public int health;                              // Character health
+    public GameManager gameManager;
 
     Rigidbody2D rb;
     string moveStatus;                              // Used for speech control
@@ -38,6 +39,7 @@ public class CharacterBase : MonoBehaviour
         moveStatus = MoveStatus.Still;
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponentInParent<PlayerManager>();
+        mode = true;
     }
 
     /* Method for setting character as active */
@@ -49,6 +51,7 @@ public class CharacterBase : MonoBehaviour
     /* Method for setting character as inactive */
     public void SetInactive()
     {
+        rb.velocity = new Vector2(0, 0);
         isActive = false;
         UpdateMoveStatus(MoveStatus.Still);
     }
@@ -70,7 +73,9 @@ public class CharacterBase : MonoBehaviour
     public void StopMovement()
     {
         if (rb != null)
-            rb.velocity = new Vector2(0f, 0f);
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     /* Move x,y position on the map */
@@ -88,6 +93,7 @@ public class CharacterBase : MonoBehaviour
                 case MoveStatus.Still:
                     xDirection = 0;
                     yDirection = 0;
+                    StopMovement();
                     break;
                 case MoveStatus.Right:
                     xDirection = 1;
@@ -98,7 +104,6 @@ public class CharacterBase : MonoBehaviour
                     yDirection = 0;
                     break;
                 case MoveStatus.Up:
-                    Debug.Log("poop");
                     xDirection = 0;
                     yDirection = 1;
                     break;
@@ -113,8 +118,8 @@ public class CharacterBase : MonoBehaviour
             }
         }
 
+        // Update velocity accordingly
         Vector3 moveDirection = new Vector3(xDirection, yDirection, 0.0f);
-
         rb.velocity = moveDirection * speed;
     }
 
@@ -136,10 +141,13 @@ public class CharacterBase : MonoBehaviour
         {
             switch (moveStatus)
             {
-                case MoveStatus.Right:
+                case MoveStatus.Still:
+                    StopMovement();
+                    break;
+                case MoveStatus.Down:   // Rotate clockwise
                     transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
                     break;
-                case MoveStatus.Left:
+                case MoveStatus.Up:     // Rotate counter clockwise
                     transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
                     break;
                 default:
@@ -176,6 +184,13 @@ public class CharacterBase : MonoBehaviour
     /* Method for Shoot bullet */
     public void ShootBullet()
     {
+        // End turn
+        if (gameManager is null)
+        {
+            gameManager = GetComponentInParent<GameManager>();
+        }
+        gameManager.GetComponent<GameManager>().EndTurn();
+
         Vector3 currentPosition = transform.position + (transform.right * (float)0.30); // Spawn bullet in front of character
         Transform bulletTransform = Instantiate(pfBullet, currentPosition, Quaternion.identity); // Create new bullet prefab
 
@@ -193,12 +208,12 @@ public class CharacterBase : MonoBehaviour
         if (isBullet)
         {
             health -= power;
-            Debug.Log("Character hit! Health is now: " + health);
+            //Debug.Log("Character hit! Health is now: " + health);
         }
         else
         {
             health += power;
-            Debug.Log("Character healed! Health is now: " + health);
+            //Debug.Log("Character healed! Health is now: " + health);
         }
     }
 

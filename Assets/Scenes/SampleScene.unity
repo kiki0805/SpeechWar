@@ -155,7 +155,7 @@ MonoBehaviour:
   - {fileID: 1994167505}
   - {fileID: 1299905821}
   - {fileID: 1109516687}
-  speechInput: 0
+  speechInput: 1
 --- !u!4 &163357301
 Transform:
   m_ObjectHideFlags: 0
@@ -1666,6 +1666,7 @@ MonoBehaviour:
   range: 5
   power: 0
   health: 0
+  gameManager: {fileID: 1175731000}
   mode: 0
   pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
     type: 3}
@@ -1855,6 +1856,7 @@ MonoBehaviour:
   range: 5
   power: 2
   health: 10
+  gameManager: {fileID: 1175731000}
   mode: 0
   pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
     type: 3}
@@ -1967,7 +1969,7 @@ GameObject:
   - component: {fileID: 1175731000}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2149,6 +2151,7 @@ MonoBehaviour:
   range: 5
   power: 2
   health: 10
+  gameManager: {fileID: 1175731000}
   mode: 0
   pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
     type: 3}
@@ -2301,6 +2304,7 @@ MonoBehaviour:
   range: 5
   power: 2
   health: 10
+  gameManager: {fileID: 1175731000}
   mode: 0
   pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
     type: 3}
@@ -107892,7 +107896,7 @@ GameObject:
   - component: {fileID: 1366132565}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115102,11 +115106,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  isHealer: 0
+  isHealer: 1
   rotationSpeed: 60
   range: 5
   power: 0
   health: 0
+  gameManager: {fileID: 1175731000}
   mode: 0
   pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
     type: 3}
@@ -115241,7 +115246,7 @@ MonoBehaviour:
   - {fileID: 1488380537}
   - {fileID: 2106874917}
   - {fileID: 1912943388}
-  speechInput: 1
+  speechInput: 0
 --- !u!4 &1624152933
 Transform:
   m_ObjectHideFlags: 0
@@ -115568,6 +115573,7 @@ MonoBehaviour:
   range: 5
   power: 0
   health: 0
+  gameManager: {fileID: 1175731000}
   mode: 0
   pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
     type: 3}
@@ -115720,6 +115726,7 @@ MonoBehaviour:
   range: 5
   power: 2
   health: 10
+  gameManager: {fileID: 1175731000}
   mode: 0
   pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
     type: 3}
@@ -115872,6 +115879,7 @@ MonoBehaviour:
   range: 5
   power: 0
   health: 0
+  gameManager: {fileID: 1175731000}
   mode: 0
   pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
     type: 3}

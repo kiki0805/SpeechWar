@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class BulletShot : MonoBehaviour
 {
-    Vector3 bulletDir;          // Direction of bullet
     public float moveSpeed;
+    public Rigidbody2D rb;      // This rb should be attached to bullet prefab
+
+    Vector3 bulletDir;          // Direction of bullet
     float range;                // Time in seconds before bullet is destroyed
     int power;                  // How much health the bullet will take/give
     bool isBullet;              // Keeps track if it's healing or damaging shot
-    Quaternion rot;
-    public Rigidbody2D rb;      // This rb should be attached to bullet prefab
-    
+    GameObject gameManager;
+
     // These two floats used to get the proper movement angle
     float x;
     float y;
@@ -28,6 +29,11 @@ public class BulletShot : MonoBehaviour
         Destroy(gameObject, range);                         // Destroy bullet after a certain time (range)
     }
 
+    void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+    }
+
     /*  Method for comparing vectors (because I do not trust Unity's built in comparison)
         @param v1, v2: Two vectors
         @return boolean representing if vectors are close enought to be considered equal or not
@@ -42,6 +48,7 @@ public class BulletShot : MonoBehaviour
     */
     public void OnCollisionEnter2D(Collision2D collisionObject)
     {
+        rb.velocity = bulletDir * 0;    // Stop bullet
         if (collisionObject.transform.CompareTag("Wall"))
         {
             Vector3 newDirection = Vector3.Reflect(rb.velocity, collisionObject.contacts[0].normal);
@@ -61,10 +68,15 @@ public class BulletShot : MonoBehaviour
         }
         else if(collisionObject.transform.CompareTag("Character"))
         {
-            rb.velocity = bulletDir * 0;
             collisionObject.transform.GetComponent<CharacterBase>().ChangeCharacterHealth(isBullet, power);
             Destroy(gameObject, 0f);
         }
+    }
+
+    /* Start timer again when bullet destroyed */
+    void OnDestroy()
+    {
+        gameManager.GetComponent<GameManager>().StartTurn();
     }
 
     // Move bullet each frame

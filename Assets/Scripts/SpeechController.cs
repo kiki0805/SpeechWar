@@ -9,7 +9,7 @@ public class SpeechController : MonoBehaviour
     PlayerManager controller;       // Get controller of active player
 
     // Speech input variables
-    public string[] keywords = new string[] {"up", "below", "left", "right", "stop", "switch", "shoot"};
+    public string[] keywords = new string[] {"stop", "right", "left", "up", "below", "switch", "shoot"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     private KeywordRecognizer recognizer;
 
