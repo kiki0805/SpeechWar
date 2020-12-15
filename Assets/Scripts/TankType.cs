@@ -15,7 +15,6 @@ public class TankType : CharacterBase
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        mode = true;
         isActive = true;
     }
 

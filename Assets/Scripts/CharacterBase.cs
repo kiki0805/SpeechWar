@@ -24,7 +24,6 @@ public class CharacterBase : MonoBehaviour
     string moveStatus;  // Will be used for speech control
     Rigidbody2D rb;
     bool isActive = false;
-    [HideInInspector] public bool mode;              // Whether moving or aiming, true = moving, false = aiming
     PlayerManager manager;
     public float healthAmount = 1.0f;
     public bool dead = false;
@@ -73,12 +72,6 @@ public class CharacterBase : MonoBehaviour
     {
         moveStatus = status;
         Debug.Log("Updated moveStatus to " + moveStatus);
-    }
-
-    // Method to switch between aiming and moving
-    private void SwitchMode()
-    {
-        mode = !mode;
     }
 
     // Move x,y position on the map
@@ -135,38 +128,40 @@ public class CharacterBase : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (mode)
-            rb.velocity = new Vector2(xDirection, yDirection);
-        else
-            rb.velocity = new Vector2(0f, 0f);
+        rb.velocity = new Vector2(xDirection, yDirection);
     }
 
+    public void TurnLeft()
+    {
+        if (!manager.speechInput)
+            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+        else
+            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime * 100);
+    }
+
+    public void TurnRight()
+    {
+        if (!manager.speechInput)
+            transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
+        else
+            transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime * 100);
+    }
     // Move direction on the map
     private void MoveDirection()
     {
+        if (manager.speechInput) return;
         if (Input.GetKey(KeyCode.A))
-            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime); // forward is z-axis (towards us)
+            TurnLeft(); // forward is z-axis (towards us)
 
         if (Input.GetKey(KeyCode.D))
-            transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
+            TurnRight();
     }
 
     // Catch-all method that calls the right function depending on what mode we are in
     public void MoveCharacter()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SwitchMode();
-        }
-
-        if (mode)
-        {
-            MovePosition();
-        }
-        else if (!mode)
-        {
-            MoveDirection();
-        }
+        MovePosition();
+        MoveDirection();
     }
 
     public void ShootBullet()

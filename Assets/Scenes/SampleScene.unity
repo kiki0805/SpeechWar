@@ -155,7 +155,7 @@ MonoBehaviour:
   - {fileID: 1994167505}
   - {fileID: 1299905821}
   - {fileID: 1109516687}
-  speechInput: 0
+  speechInput: 1
 --- !u!4 &163357301
 Transform:
   m_ObjectHideFlags: 0
@@ -1817,7 +1817,6 @@ MonoBehaviour:
   rotationSpeed: 50
   range: 5
   power: 0
-  mode: 0
   healthAmount: 1
   dead: 0
 --- !u!212 &737870909
@@ -2007,7 +2006,6 @@ MonoBehaviour:
   rotationSpeed: 30
   range: 5
   power: 0
-  mode: 0
   healthAmount: 1
   dead: 0
 --- !u!212 &1109516690
@@ -2302,7 +2300,6 @@ MonoBehaviour:
   rotationSpeed: 40
   range: 5
   power: 0
-  mode: 0
   healthAmount: 1
   dead: 0
 --- !u!212 &1299905824
@@ -2455,7 +2452,6 @@ MonoBehaviour:
   rotationSpeed: 50
   range: 5
   power: 0
-  mode: 0
   healthAmount: 1
   dead: 0
 --- !u!212 &1300711785
@@ -115262,7 +115258,6 @@ MonoBehaviour:
   rotationSpeed: 60
   range: 5
   power: 0
-  mode: 0
   healthAmount: 1
   dead: 0
 --- !u!212 &1488380540
@@ -115569,6 +115564,10 @@ MonoBehaviour:
   - left
   - right
   - stop
+  - done
+  - back
+  - turn
+  - shoot
   confidence: 2
 --- !u!4 &1664233139
 Transform:
@@ -116022,7 +116021,6 @@ MonoBehaviour:
   rotationSpeed: 30
   range: 5
   power: 0
-  mode: 0
   healthAmount: 1
   dead: 0
 --- !u!212 &1912943391
@@ -116250,7 +116248,6 @@ MonoBehaviour:
   rotationSpeed: 60
   range: 5
   power: 0
-  mode: 0
   healthAmount: 1
   dead: 0
 --- !u!212 &1994167508
@@ -116403,7 +116400,6 @@ MonoBehaviour:
   rotationSpeed: 40
   range: 5
   power: 0
-  mode: 0
   healthAmount: 1
   dead: 0
 --- !u!212 &2106874920

@@ -21,6 +21,10 @@ public class PlayerManager : MonoBehaviour
         characterList[activeCharacter].GetComponent<CharacterBase>().SetActive();
     }
 
+    public CharacterBase GetActiveCharacter()
+    {
+        return characterList[activeCharacter].GetComponent<CharacterBase>();
+    }
     void Start()
     {
         //SwitchCharacter();

@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
 
+public static class Commands
+{
+    public const string TurnLeft = "back";
+    public const string TurnRight = "turn";
+    public const string Shoot = "shoot";
+    public const string Done = "done";
+}
+
 public class SpeechController : MonoBehaviour
 {
     GameManager gameManager;
 
     PlayerManager controller;
     // Start is called before the first frame update
-    public string[] keywords = new string[] { "up", "below", "left", "right", "stop" };
+    public string[] keywords = new string[] { "up", "below", "left", "right", "stop", 
+        "turn", "back",
+        "shoot", "done"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     private KeywordRecognizer recognizer;
     private void Start()
@@ -50,6 +60,17 @@ public class SpeechController : MonoBehaviour
                 break;
             case MoveStatus.Down:
                 controller.UpdateCharacterMoveStatus(MoveStatus.Down);
+                break;
+            case Commands.TurnLeft:
+                controller.GetActiveCharacter().TurnLeft();
+                break;
+            case Commands.TurnRight:
+                controller.GetActiveCharacter().TurnRight();
+                break;
+            case Commands.Shoot:
+                controller.GetActiveCharacter().ShootBullet();
+                break;
+            case Commands.Done:
                 break;
             default:
                 break;
