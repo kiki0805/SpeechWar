@@ -30,6 +30,7 @@ public class CharacterBase : MonoBehaviour
     SpriteRenderer m_SpriteRenderer;
     [SerializeField] private Transform pfBullet;    // Is needed to instantiate bullet objects
     public GameManager gameManager;
+    bool directionMode = true;
 
     void Start()
     {
@@ -156,8 +157,23 @@ public class CharacterBase : MonoBehaviour
     // Catch-all method that calls the right function depending on what mode we are in
     public void MoveCharacter()
     {
-        MovePosition();
-        MoveDirection();
+        if (!manager.speechInput && directionMode)
+        {
+            MoveDirection();
+        } else
+        {
+            MovePosition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SwitchMode();
+        }
+    }
+
+    private void SwitchMode()
+    {
+        directionMode = !directionMode;
     }
 
     public void ShootBullet()
