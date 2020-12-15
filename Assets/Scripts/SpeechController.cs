@@ -5,13 +5,15 @@ using UnityEngine.Windows.Speech;
 
 public class SpeechController : MonoBehaviour
 {
-    GameManager gameManager;
+    GameManager gameManager;        // Reference this object
+    PlayerManager controller;       // Get controller of active player
 
-    PlayerManager controller;
-    // Start is called before the first frame update
-    public string[] keywords = new string[] { "up", "below", "left", "right", "stop" };
+    // Speech input variables
+    public string[] keywords = new string[] {"up", "below", "left", "right", "stop", "switch", "shoot"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     private KeywordRecognizer recognizer;
+
+    /* Setup */
     private void Start()
     {
         recognizer = new KeywordRecognizer(keywords, confidence);
@@ -20,15 +22,21 @@ public class SpeechController : MonoBehaviour
         gameManager = GetComponentInParent<GameManager>();
     }
 
+    /* Get PlayerManager-script of active player*/
     public void RefreshController()
     {
+        if (gameManager is null)
+        {
+            gameManager = GetComponentInParent<GameManager>();
+        }
         controller = gameManager.GetComponent<GameManager>().GetActivePlayer().GetComponent<PlayerManager>();
     }
 
     private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
-        if (controller is null) return;
-        if (!controller.speechInput) return;
+        if (controller is null || !controller.speechInput) return;         // If controller (player) don't exist or not using speech input, do nothing
+        
+        // Else switch MoveStatus accordingly
         switch (args.text)
         {
             case MoveStatus.Still:
@@ -46,6 +54,12 @@ public class SpeechController : MonoBehaviour
             case MoveStatus.Down:
                 controller.UpdateCharacterMoveStatus(MoveStatus.Down);
                 break;
+            case MoveStatus.Switch:
+                controller.UpdateCharacterMoveStatus(MoveStatus.Switch);
+                break;
+            case MoveStatus.Shoot:
+                controller.UpdateCharacterMoveStatus(MoveStatus.Shoot);
+                break;
             default:
                 break;
         }
@@ -59,11 +73,5 @@ public class SpeechController : MonoBehaviour
             recognizer.OnPhraseRecognized -= Recognizer_OnPhraseRecognized;
             recognizer.Stop();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

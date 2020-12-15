@@ -155,7 +155,7 @@ MonoBehaviour:
   - {fileID: 1994167505}
   - {fileID: 1299905821}
   - {fileID: 1109516687}
-  speechInput: 1
+  speechInput: 0
 --- !u!4 &163357301
 Transform:
   m_ObjectHideFlags: 0
@@ -1660,13 +1660,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
-    type: 3}
   speed: 0.3
+  isHealer: 0
   rotationSpeed: 50
   range: 5
   power: 0
+  health: 0
   mode: 0
+  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
+    type: 3}
 --- !u!212 &737870909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1847,13 +1849,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
-    type: 3}
   speed: 0.1
+  isHealer: 0
   rotationSpeed: 30
   range: 5
-  power: 0
+  power: 2
+  health: 10
   mode: 0
+  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
+    type: 3}
 --- !u!212 &1109516690
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2139,13 +2143,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
-    type: 3}
   speed: 0.2
+  isHealer: 0
   rotationSpeed: 40
   range: 5
-  power: 0
+  power: 2
+  health: 10
   mode: 0
+  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
+    type: 3}
 --- !u!212 &1299905824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2289,13 +2295,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
-    type: 3}
   speed: 0.3
+  isHealer: 0
   rotationSpeed: 50
   range: 5
-  power: 0
+  power: 2
+  health: 10
   mode: 0
+  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
+    type: 3}
 --- !u!212 &1300711785
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115093,13 +115101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
-    type: 3}
   speed: 0.5
+  isHealer: 0
   rotationSpeed: 60
   range: 5
   power: 0
+  health: 0
   mode: 0
+  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
+    type: 3}
 --- !u!212 &1488380540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115329,6 +115339,8 @@ MonoBehaviour:
   - left
   - right
   - stop
+  - switch
+  - shoot
   confidence: 2
 --- !u!4 &1664233139
 Transform:
@@ -115550,13 +115562,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
-    type: 3}
   speed: 0.1
+  isHealer: 0
   rotationSpeed: 30
   range: 5
   power: 0
+  health: 0
   mode: 0
+  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
+    type: 3}
 --- !u!212 &1912943391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115700,13 +115714,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
-    type: 3}
   speed: 0.5
+  isHealer: 1
   rotationSpeed: 60
   range: 5
-  power: 0
+  power: 2
+  health: 10
   mode: 0
+  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
+    type: 3}
 --- !u!212 &1994167508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -115850,13 +115866,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
-    type: 3}
   speed: 0.2
+  isHealer: 0
   rotationSpeed: 40
   range: 5
   power: 0
+  health: 0
   mode: 0
+  pfBullet: {fileID: 4803824577037038303, guid: a13ec7b8af817634aac71a22e10b447c,
+    type: 3}
 --- !u!212 &2106874920
 SpriteRenderer:
   m_ObjectHideFlags: 0

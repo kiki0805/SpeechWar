@@ -8,7 +8,7 @@ public class BulletShot : MonoBehaviour
     public float moveSpeed;
     float range;                // Time in seconds before bullet is destroyed
     int power;                  // How much health the bullet will take/give
-    bool isDamagingShot;        // Keeps track if it's healing or damaging shot
+    bool isBullet;              // Keeps track if it's healing or damaging shot
     Quaternion rot;
     public Rigidbody2D rb;      // This rb should be attached to bullet prefab
     
@@ -17,10 +17,12 @@ public class BulletShot : MonoBehaviour
     float y;
 
     /*  Constructor for bullet objects. Called in CharacterBase script */
-    public void Setup(Vector3 bulletDir, float range, int power)
+    public void Setup(Vector3 bulletDir, float range, int power, bool isBullet)
     {
         this.bulletDir = bulletDir;
         this.range = range;
+        this.isBullet = isBullet;
+        this.power = power;
 
         transform.rotation = Quaternion.Euler(bulletDir);   // Spawn bullet at the facing direction of character
         Destroy(gameObject, range);                         // Destroy bullet after a certain time (range)
@@ -59,7 +61,9 @@ public class BulletShot : MonoBehaviour
         }
         else if(collisionObject.transform.CompareTag("Character"))
         {
-            // Adjust character health accordingly
+            rb.velocity = bulletDir * 0;
+            collisionObject.transform.GetComponent<CharacterBase>().ChangeCharacterHealth(isBullet, power);
+            Destroy(gameObject, 0f);
         }
     }
 
