@@ -155,7 +155,7 @@ MonoBehaviour:
   - {fileID: 1994167505}
   - {fileID: 1299905821}
   - {fileID: 1109516687}
-  speechInput: 0
+  speechInput: 1
 --- !u!4 &163357301
 Transform:
   m_ObjectHideFlags: 0
@@ -1994,7 +1994,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1664233139}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -115230,7 +115231,7 @@ MonoBehaviour:
   - {fileID: 1488380537}
   - {fileID: 2106874917}
   - {fileID: 1912943388}
-  speechInput: 0
+  speechInput: 1
 --- !u!4 &1624152933
 Transform:
   m_ObjectHideFlags: 0
@@ -115287,12 +115288,62 @@ Transform:
   m_GameObject: {fileID: 1634774916}
   m_LocalRotation: {x: -0, y: -0, z: 0.2083834, w: 0.97804725}
   m_LocalPosition: {x: -0.61, y: 2.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 597478747}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 24.055}
+--- !u!1 &1664233137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664233139}
+  - component: {fileID: 1664233138}
+  m_Layer: 0
+  m_Name: SpeechController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1664233138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664233137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 208ef50dde5c2244695d1a9d12050f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keywords:
+  - up
+  - below
+  - left
+  - right
+  - stop
+  confidence: 2
+--- !u!4 &1664233139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664233137}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.025817, y: -2.3492055, z: -3.2911692}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1175731001}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832889951
 GameObject:
   m_ObjectHideFlags: 0

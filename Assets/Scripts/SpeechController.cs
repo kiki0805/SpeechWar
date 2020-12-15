@@ -5,96 +5,59 @@ using UnityEngine.Windows.Speech;
 
 public class SpeechController : MonoBehaviour
 {
-    public GameObject character;
-    protected DictationRecognizer dictationRecognizer;
-    public bool speechMode;
+    GameManager gameManager;
 
-    CharacterBase controller;
+    PlayerManager controller;
+    // Start is called before the first frame update
+    public string[] keywords = new string[] { "up", "below", "left", "right", "stop" };
+    public ConfidenceLevel confidence = ConfidenceLevel.Low;
+    private KeywordRecognizer recognizer;
+    private void Start()
+    {
+        recognizer = new KeywordRecognizer(keywords, confidence);
+        recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
+        recognizer.Start();
+        gameManager = GetComponentInParent<GameManager>();
+    }
 
-    void Start()
+    public void RefreshController()
     {
-        StartDictationEngine();     // Start listening for commands
+        controller = gameManager.GetComponent<GameManager>().GetActivePlayer().GetComponent<PlayerManager>();
     }
-    private void DictationRecognizer_OnDictationHypothesis(string text)
+
+    private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
-        Debug.Log("Dictation hypothesis: " + text);
-    }
-    private void DictationRecognizer_OnDictationComplete(DictationCompletionCause completionCause)
-    {
-        switch (completionCause)
-        {
-            case DictationCompletionCause.TimeoutExceeded:
-            case DictationCompletionCause.PauseLimitExceeded:
-            case DictationCompletionCause.Canceled:
-            case DictationCompletionCause.Complete:
-                // Restart required
-                CloseDictationEngine();
-                StartDictationEngine();
-                break;
-            case DictationCompletionCause.UnknownError:
-            case DictationCompletionCause.AudioQualityFailure:
-            case DictationCompletionCause.MicrophoneUnavailable:
-            case DictationCompletionCause.NetworkFailure:
-                // Error
-                CloseDictationEngine();
-                break;
-        }
-    }
-    private void DictationRecognizer_OnDictationResult(string text, ConfidenceLevel confidence)
-    {
-        if (!speechMode) return;
-        switch (text)
+        if (controller is null) return;
+        if (!controller.speechInput) return;
+        switch (args.text)
         {
             case MoveStatus.Still:
-                controller.UpdateMoveStatus(MoveStatus.Still);
+                controller.UpdateCharacterMoveStatus(MoveStatus.Still);
                 break;
             case MoveStatus.Right:
-                controller.UpdateMoveStatus(MoveStatus.Right);
+                controller.UpdateCharacterMoveStatus(MoveStatus.Right);
                 break;
             case MoveStatus.Left:
-                controller.UpdateMoveStatus(MoveStatus.Left);
+                controller.UpdateCharacterMoveStatus(MoveStatus.Left);
                 break;
             case MoveStatus.Up:
-                controller.UpdateMoveStatus(MoveStatus.Up);
+                controller.UpdateCharacterMoveStatus(MoveStatus.Up);
                 break;
             case MoveStatus.Down:
-                controller.UpdateMoveStatus(MoveStatus.Down);
+                controller.UpdateCharacterMoveStatus(MoveStatus.Down);
                 break;
             default:
                 break;
         }
-        Debug.Log("Dictation result: " + text);
+        Debug.Log("Keyword result: " + args.text);
     }
-    private void DictationRecognizer_OnDictationError(string error, int hresult)
-    {
-        Debug.Log("Dictation error: " + error);
-    }
+
     private void OnApplicationQuit()
     {
-        CloseDictationEngine();
-    }
-    private void StartDictationEngine()
-    {
-        dictationRecognizer = new DictationRecognizer();
-        dictationRecognizer.DictationHypothesis += DictationRecognizer_OnDictationHypothesis;
-        dictationRecognizer.DictationResult += DictationRecognizer_OnDictationResult;
-        dictationRecognizer.DictationComplete += DictationRecognizer_OnDictationComplete;
-        dictationRecognizer.DictationError += DictationRecognizer_OnDictationError;
-        dictationRecognizer.Start();
-    }
-    private void CloseDictationEngine()
-    {
-        if (dictationRecognizer != null)
+        if (recognizer != null && recognizer.IsRunning)
         {
-            dictationRecognizer.DictationHypothesis -= DictationRecognizer_OnDictationHypothesis;
-            dictationRecognizer.DictationComplete -= DictationRecognizer_OnDictationComplete;
-            dictationRecognizer.DictationResult -= DictationRecognizer_OnDictationResult;
-            dictationRecognizer.DictationError -= DictationRecognizer_OnDictationError;
-            if (dictationRecognizer.Status == SpeechSystemStatus.Running)
-            {
-                dictationRecognizer.Stop();
-            }
-            dictationRecognizer.Dispose();
+            recognizer.OnPhraseRecognized -= Recognizer_OnPhraseRecognized;
+            recognizer.Stop();
         }
     }
 
