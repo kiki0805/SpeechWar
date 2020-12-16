@@ -5,9 +5,14 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject[] characterList;
-    public bool speechInput;
-    bool isActive;           // Keep track if this object active or not
+    public bool speechInput;                // true = speechInput on
+    bool isActive;                          // Keep track if (this) player active or not
     private int activeCharacter = 0;
+
+    void Start()
+    {
+        //SwitchCharacter();
+    }
 
     public void UpdateCharacterMoveStatus(string status)
     {
@@ -25,11 +30,7 @@ public class PlayerManager : MonoBehaviour
     {
         return characterList[activeCharacter].GetComponent<CharacterBase>();
     }
-    void Start()
-    {
-        //SwitchCharacter();
-    }
-
+    
     public void SetActive()
     {
         isActive = true;
