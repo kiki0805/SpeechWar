@@ -1,6 +1,18 @@
 # Speech War
 Speech War: A multiplayer game played through speech
 
+## Control in Speech Mode
+
+* `right` to move rightwards (continuous)
+* `left` to move leftwards (continuous)
+* `up` to move upwards (continuous)
+* `below` to move downwards (continuous)
+* `switch` to switch characters
+* `turn` to turn clockwise (continuous)
+* `back` to turn anticlockwise (continuous)
+* `stop` to stop movement and turning
+* `shoot` to shoot a bullet
+
 ## CODING
 ### Coding style
 * CamelCase for variables, functions and methods
