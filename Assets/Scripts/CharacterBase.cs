@@ -89,6 +89,8 @@ public class CharacterBase : MonoBehaviour
     /* Stop movement (used for speech recognition) */
     public void StopMovement()
     {
+        xDirection = 0;
+        yDirection = 0;
         if (rb != null)
         {
             rb.velocity = Vector3.zero;
@@ -221,12 +223,12 @@ public class CharacterBase : MonoBehaviour
 
         if (isBullet)
         {
-            health -= 0.1f;//power;
+            health -= power;
             //Debug.Log("Character hit! Health is now: " + health);
         }
         else
         {
-            health += 0.1f;//power;
+            health += power;
             //Debug.Log("Character healed! Health is now: " + health);
         }
 
