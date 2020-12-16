@@ -64,10 +64,7 @@ public class GameManager : MonoBehaviour
             playerDisplay.text = "Turn: Player 1";
         }
 
-        if (activePlayer.GetComponent<PlayerManager>().speechInput)
-        {
-            speechController.RefreshController();
-        }
+        speechController.RefreshController();
     }
 
     // Method for counting down and displaying it on screen
