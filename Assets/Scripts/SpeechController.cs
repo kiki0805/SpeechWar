@@ -8,7 +8,6 @@ public static class Commands
     public const string TurnLeft = "back";
     public const string TurnRight = "turn";
     public const string Shoot = "shoot";
-    public const string Done = "done";
 }
 
 public class SpeechController : MonoBehaviour
@@ -17,9 +16,9 @@ public class SpeechController : MonoBehaviour
     PlayerManager controller;       // Get controller of active player
 
     // Start is called before the first frame update
-    public string[] keywords = new string[] { "up", "below", "left", "right", "stop",
+    public string[] keywords = new string[] { "up", "below", "left", "right", "stop", "switch",
         "turn", "back",
-        "shoot", "done"};
+        "shoot"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     private KeywordRecognizer recognizer;
 
@@ -49,8 +48,8 @@ public class SpeechController : MonoBehaviour
         // Else switch MoveStatus accordingly
         switch (args.text)
         {
-            case MoveStatus.Still:
-                controller.UpdateCharacterMoveStatus(MoveStatus.Still);
+            case MoveStatus.Stop:
+                controller.UpdateCharacterMoveStatus(MoveStatus.Stop);
                 break;
             case MoveStatus.Right:
                 controller.UpdateCharacterMoveStatus(MoveStatus.Right);
@@ -64,16 +63,19 @@ public class SpeechController : MonoBehaviour
             case MoveStatus.Down:
                 controller.UpdateCharacterMoveStatus(MoveStatus.Down);
                 break;
+            case MoveStatus.Switch:
+                controller.SwitchCharacter();
+                break;
             case Commands.TurnLeft:
-                controller.GetActiveCharacter().TurnLeft();
+                controller.UpdateCharacterMoveStatus(MoveStatus.TurnLeft);
+                //controller.GetActiveCharacter().TurnLeft();
                 break;
             case Commands.TurnRight:
-                controller.GetActiveCharacter().TurnRight();
+                controller.UpdateCharacterMoveStatus(MoveStatus.TurnRight);
+                //controller.GetActiveCharacter().TurnRight();
                 break;
             case Commands.Shoot:
                 controller.GetActiveCharacter().ShootBullet();
-                break;
-            case Commands.Done:
                 break;
             default:
                 break;

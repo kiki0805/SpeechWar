@@ -5,13 +5,15 @@ using UnityEngine;
 /* Separate class for speech input */
 public static class MoveStatus
 {
-    public const string Still = "still";
+    public const string Stop = "stop";
     public const string Left = "left";
     public const string Right = "right";
     public const string Up = "up";
     public const string Down = "below";
-    public const string Switch = "switch";
+    public const string TurnRight = "turn";
+    public const string TurnLeft = "back";
     public const string Shoot = "shoot";
+    public const string Switch = "switch";
 }
 
 public class CharacterBase : MonoBehaviour
@@ -37,13 +39,18 @@ public class CharacterBase : MonoBehaviour
     SpriteRenderer m_SpriteRenderer;
     bool directionMode = true;                      // Used for keyboard control to switch between aiming and moving
 
+    Material matWhite;
+    Material matDefault;
+
     /* Setup */
     void Start()
     {
-        moveStatus = MoveStatus.Still;
+        moveStatus = MoveStatus.Stop;
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponentInParent<PlayerManager>();
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        matDefault = m_SpriteRenderer.material;
     }
 
     /* Method for setting character as active */
@@ -61,7 +68,7 @@ public class CharacterBase : MonoBehaviour
     {
         rb.velocity = new Vector2(0, 0);
         isActive = false;
-        UpdateMoveStatus(MoveStatus.Still);
+        UpdateMoveStatus(MoveStatus.Stop);
         StopMovement();
         if (dead) return;
         m_SpriteRenderer.color = Color.white;
@@ -88,7 +95,7 @@ public class CharacterBase : MonoBehaviour
         directionMode = !directionMode;
     }
 
-    /* Stop movement (used for speech recognition) */
+    /* Stop movement */
     public void StopMovement()
     {
         xDirection = 0;
@@ -111,10 +118,9 @@ public class CharacterBase : MonoBehaviour
         {
             switch (moveStatus)     // Else update status and move character
             {
-                case MoveStatus.Still:
+                case MoveStatus.Stop:
                     xDirection = 0;
                     yDirection = 0;
-                    StopMovement();
                     break;
                 case MoveStatus.Right:
                     xDirection = 1;
@@ -144,30 +150,39 @@ public class CharacterBase : MonoBehaviour
         rb.velocity = moveDirection * speed;
     }
 
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(xDirection, yDirection);
-    }
-
     public void TurnLeft()
     {
-        if (!manager.speechInput)
+        //if (!manager.speechInput)
             transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-        else
-            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime * 100);
+        //else
+        //    transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime * 100);
     }
 
     public void TurnRight()
     {
-        if (!manager.speechInput)
+        //if (!manager.speechInput)
             transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
-        else
-            transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime * 100);
+        //else
+        //    transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime * 100);
     }
     // Move direction on the map
     private void MoveDirection()
     {
-        if (manager.speechInput) return;
+        if (manager.speechInput)
+        {
+            switch (moveStatus)     // Else update status and move character
+            {
+                case MoveStatus.TurnRight:
+                    TurnRight();
+                    break;
+                case MoveStatus.TurnLeft:
+                    TurnLeft();
+                    break;
+                default:
+                    break;
+            }
+            return;
+        }
         if (Input.GetKey(KeyCode.A))
             TurnLeft(); // forward is z-axis (towards us)
 
@@ -178,14 +193,17 @@ public class CharacterBase : MonoBehaviour
     /* Catch-all method that calls the right function depending on what mode we are in */
     public void MoveCharacter()
     {
-        if (!manager.speechInput && directionMode)  // If keyboard input and directionMode = true
+        if (manager.speechInput)
         {
             MoveDirection();
-        }
-        else
-        {
             MovePosition();
+            return;
         }
+
+        if (directionMode)
+            MoveDirection();
+        else
+            MovePosition();
 
         // For keyboard-input only
         if (Input.GetKeyDown(KeyCode.Space))
@@ -196,11 +214,12 @@ public class CharacterBase : MonoBehaviour
         {
             ShootBullet();
         }
-        
+
     }
 
     public void ShootBullet()
     {
+        StopMovement();
         if (gameManager is null)
         {
             gameManager = GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>();
@@ -226,6 +245,8 @@ public class CharacterBase : MonoBehaviour
         if (isBullet)
         {
             health -= power;
+            m_SpriteRenderer.material = matWhite;
+            Invoke("ResetMaterial", .2f);
             //Debug.Log("Character hit! Health is now: " + health);
         }
         else
@@ -233,12 +254,18 @@ public class CharacterBase : MonoBehaviour
             health += power;
             //Debug.Log("Character healed! Health is now: " + health);
         }
-
+        rb.velocity = Vector3.zero;
+        
         if (health <= 0)
         {
             Die();
             SetInactive();
         }
+    }
+
+    void ResetMaterial()
+    {
+        m_SpriteRenderer.material = matDefault;
     }
 
     void Update()
