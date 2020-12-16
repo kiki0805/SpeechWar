@@ -5,12 +5,13 @@ using UnityEngine;
 /* Separate class for speech input */
 public static class MoveStatus
 {
-    public const string Still = "still";
+    public const string Still = "stop";
     public const string Left = "left";
     public const string Right = "right";
     public const string Up = "up";
     public const string Down = "below";
-    public const string Switch = "switch";
+    public const string TurnRight = "turn";
+    public const string TurnLeft = "back";
     public const string Shoot = "shoot";
 }
 
@@ -149,23 +150,37 @@ public class CharacterBase : MonoBehaviour
 
     public void TurnLeft()
     {
-        if (!manager.speechInput)
+        //if (!manager.speechInput)
             transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-        else
-            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime * 100);
+        //else
+        //    transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime * 100);
     }
 
     public void TurnRight()
     {
-        if (!manager.speechInput)
+        //if (!manager.speechInput)
             transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
-        else
-            transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime * 100);
+        //else
+        //    transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime * 100);
     }
     // Move direction on the map
     private void MoveDirection()
     {
-        if (manager.speechInput) return;
+        if (manager.speechInput)
+        {
+            switch (moveStatus)     // Else update status and move character
+            {
+                case MoveStatus.TurnRight:
+                    TurnRight();
+                    break;
+                case MoveStatus.TurnLeft:
+                    TurnLeft();
+                    break;
+                default:
+                    break;
+            }
+            return;
+        }
         if (Input.GetKey(KeyCode.A))
             TurnLeft(); // forward is z-axis (towards us)
 
@@ -176,14 +191,17 @@ public class CharacterBase : MonoBehaviour
     /* Catch-all method that calls the right function depending on what mode we are in */
     public void MoveCharacter()
     {
-        if (!manager.speechInput && directionMode)  // If keyboard input and directionMode = true
+        if (manager.speechInput)
         {
             MoveDirection();
-        }
-        else
-        {
             MovePosition();
+            return;
         }
+
+        if (directionMode)
+            MoveDirection();
+        else
+            MovePosition();
 
         // For keyboard-input only
         if (Input.GetKeyDown(KeyCode.Space))
@@ -194,7 +212,7 @@ public class CharacterBase : MonoBehaviour
         {
             ShootBullet();
         }
-        
+
     }
 
     public void ShootBullet()
