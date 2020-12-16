@@ -71,9 +71,12 @@ public class BulletShot : MonoBehaviour
         {
             CharacterBase character = collisionObject.collider.GetComponent<CharacterBase>();
 
+            // Do not change character health if character dead or null
             if (character == null) return;
             if (character.dead) return;
-            collisionObject.transform.GetComponent<CharacterBase>().ChangeCharacterHealth(isBullet, power); // Change character health accordingly
+
+            // Otherwise change character health accordingly
+            collisionObject.transform.GetComponent<CharacterBase>().ChangeCharacterHealth(isBullet, power);
             Destroy(gameObject, 0f);
         }
     }

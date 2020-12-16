@@ -78,6 +78,7 @@ public class CharacterBase : MonoBehaviour
     {
         dead = true;
         m_SpriteRenderer.color = Color.grey;
+        manager.RemoveCharacter();
     }
 
     /* Updates move status, is done in SpeechController */
@@ -90,6 +91,7 @@ public class CharacterBase : MonoBehaviour
     /* Method to switch between aiming and moving (KEYBOARD CONTROL ONLY) */
     private void SwitchMode()
     {
+        StopMovement();                     // Prevent gliding when switching from movement to direction
         directionMode = !directionMode;
     }
 

@@ -80,7 +80,7 @@ public class SpeechController : MonoBehaviour
             default:
                 break;
         }
-        Debug.Log("Keyword result: " + args.text);
+        //Debug.Log("Keyword result: " + args.text);
     }
 
     private void OnApplicationQuit()
