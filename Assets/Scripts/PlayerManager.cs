@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
         characterList[activeCharacter].GetComponent<CharacterBase>().UpdateMoveStatus(status);
     }
 
-    private void SwitchCharacter()
+    public void SwitchCharacter()
     {
         characterList[activeCharacter].GetComponent<CharacterBase>().SetInactive();
         activeCharacter = (activeCharacter + 1) % 4;

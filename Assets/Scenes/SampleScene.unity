@@ -155,7 +155,7 @@ MonoBehaviour:
   - {fileID: 1994167505}
   - {fileID: 1299905821}
   - {fileID: 1109516687}
-  speechInput: 0
+  speechInput: 1
 --- !u!4 &163357301
 Transform:
   m_ObjectHideFlags: 0

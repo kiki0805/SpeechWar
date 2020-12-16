@@ -5,13 +5,12 @@ using UnityEngine;
 /* Separate class for speech input */
 public static class MoveStatus
 {
-    public const string Still = "still";
+    public const string Stop = "stop";
     public const string Left = "left";
     public const string Right = "right";
     public const string Up = "up";
     public const string Down = "below";
     public const string Switch = "switch";
-    public const string Shoot = "shoot";
 }
 
 public class CharacterBase : MonoBehaviour
@@ -40,7 +39,7 @@ public class CharacterBase : MonoBehaviour
     /* Setup */
     void Start()
     {
-        moveStatus = MoveStatus.Still;
+        moveStatus = MoveStatus.Stop;
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponentInParent<PlayerManager>();
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -61,7 +60,7 @@ public class CharacterBase : MonoBehaviour
     {
         rb.velocity = new Vector2(0, 0);
         isActive = false;
-        UpdateMoveStatus(MoveStatus.Still);
+        UpdateMoveStatus(MoveStatus.Stop);
         StopMovement();
         if (dead) return;
         m_SpriteRenderer.color = Color.white;
@@ -86,7 +85,7 @@ public class CharacterBase : MonoBehaviour
         directionMode = !directionMode;
     }
 
-    /* Stop movement (used for speech recognition) */
+    /* Stop movement */
     public void StopMovement()
     {
         if (rb != null)
@@ -107,10 +106,9 @@ public class CharacterBase : MonoBehaviour
         {
             switch (moveStatus)     // Else update status and move character
             {
-                case MoveStatus.Still:
+                case MoveStatus.Stop:
                     xDirection = 0;
                     yDirection = 0;
-                    StopMovement();
                     break;
                 case MoveStatus.Right:
                     xDirection = 1;
@@ -138,11 +136,6 @@ public class CharacterBase : MonoBehaviour
         // Update velocity accordingly
         Vector3 moveDirection = new Vector3(xDirection, yDirection, 0.0f);
         rb.velocity = moveDirection * speed;
-    }
-
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(xDirection, yDirection);
     }
 
     public void TurnLeft()
@@ -197,6 +190,7 @@ public class CharacterBase : MonoBehaviour
 
     public void ShootBullet()
     {
+        StopMovement();
         if (gameManager is null)
         {
             gameManager = GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>();
