@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public GameManager gameManager;         // Need to set this in Inspector
     public GameObject[] characterList;
     public bool speechInput;                // true = speechInput on
     bool isActive;                          // Keep track if (this) player active or not
+    int charactersAlive;                    // Keep track of how many characters are alive
     private int activeCharacter = 0;
+
 
     void Start()
     {
-        //SwitchCharacter();
+        charactersAlive = 4;
+    }
+
+    public void SetSpeechInput(int hasSpeechInput)
+    {
+        if(hasSpeechInput == 1)
+        {
+            speechInput = true;
+        }
+        else
+        {
+            speechInput = false;
+        }
     }
 
     public void UpdateCharacterMoveStatus(string status)
@@ -43,6 +58,19 @@ public class PlayerManager : MonoBehaviour
         characterList[activeCharacter].GetComponent<CharacterBase>().SetInactive();
     }
 
+    public void RemoveCharacter()
+    {
+        charactersAlive--;
+        if(charactersAlive <= 0)
+        {
+            gameManager.GetComponent<GameManager>().EndGame();      // Go to end scene
+        }
+    }
+
+    public int GetCharactersAlive()
+    {
+        return charactersAlive;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab) && isActive)

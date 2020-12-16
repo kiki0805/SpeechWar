@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f48c2705b2e6a3a4986d8d6fdcf63c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1175731000}
   characterList:
   - {fileID: 1300711782}
   - {fileID: 1994167505}
@@ -1723,7 +1724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737870906}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 10, y: 2, z: 0}
+  m_LocalPosition: {x: 9.93, y: -1.04, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 1104243422}
@@ -1746,8 +1747,8 @@ MonoBehaviour:
   isHealer: 0
   rotationSpeed: 50
   range: 5
-  power: 0
-  health: 10
+  power: 1
+  health: 1
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2020,7 +2021,7 @@ MonoBehaviour:
   rotationSpeed: 30
   range: 5
   power: 2
-  health: 10
+  health: 1
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2467,7 +2468,7 @@ MonoBehaviour:
   rotationSpeed: 40
   range: 5
   power: 2
-  health: 10
+  health: 1
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2598,7 +2599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300711782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.296, y: -1.651, z: 0}
+  m_LocalPosition: {x: -0.07, y: -4.48, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 697072108}
@@ -2622,7 +2623,7 @@ MonoBehaviour:
   rotationSpeed: 50
   range: 5
   power: 2
-  health: 10
+  health: 1
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -115580,7 +115581,7 @@ MonoBehaviour:
   rotationSpeed: 60
   range: 5
   power: 0
-  health: 10
+  health: 1
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -115712,6 +115713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f48c2705b2e6a3a4986d8d6fdcf63c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1175731000}
   characterList:
   - {fileID: 737870906}
   - {fileID: 1488380537}
@@ -116121,7 +116123,7 @@ MonoBehaviour:
   rotationSpeed: 30
   range: 5
   power: 0
-  health: 10
+  health: 1
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -116350,7 +116352,7 @@ MonoBehaviour:
   rotationSpeed: 60
   range: 5
   power: 2
-  health: 10
+  health: 1
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -116505,7 +116507,7 @@ MonoBehaviour:
   rotationSpeed: 40
   range: 5
   power: 0
-  health: 10
+  health: 1
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0

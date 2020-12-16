@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,12 +27,12 @@ public class GameManager : MonoBehaviour
         activePlayer = player1;
         playerDisplay.text = "Turn: Player 1";
 
-        // Set up speech controller
-        if (player1.GetComponent<PlayerManager>().speechInput)
-        {
-            speechController = GetComponentInChildren<SpeechController>();
-            speechController.RefreshController();                               // Give speechController this player as controller
-        }
+        // Set up speech controller(s)
+        player1.GetComponent<PlayerManager>().SetSpeechInput(PlayerPrefs.GetInt("player1"));
+        player2.GetComponent<PlayerManager>().SetSpeechInput(PlayerPrefs.GetInt("player2"));
+
+        speechController = GetComponentInChildren<SpeechController>();
+        speechController.RefreshController();
 
         // Start timer
         lastRoutine = StartCoroutine(CountdownRoundTimer());
@@ -99,5 +100,22 @@ public class GameManager : MonoBehaviour
         ChangePlayer();
         time = TIME_PER_ROUND;
         lastRoutine = StartCoroutine(CountdownRoundTimer());
+    }
+
+    public void EndGame()
+    {
+        // See who won
+        int player1CharactersAlive = player1.GetComponent<PlayerManager>().GetCharactersAlive();
+        if(player1CharactersAlive == 0)
+        {
+            PlayerPrefs.SetString("winner", "Player 2");
+            Debug.Log("Winner is player 2!");
+        }
+        else
+        {
+            PlayerPrefs.SetString("winner", "Player 1");
+            Debug.Log("Winner is player 1!");
+        }
+        SceneManager.LoadScene("EndMenu");
     }
 }
