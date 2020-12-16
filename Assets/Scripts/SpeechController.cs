@@ -16,7 +16,7 @@ public class SpeechController : MonoBehaviour
     PlayerManager controller;       // Get controller of active player
 
     // Start is called before the first frame update
-    public string[] keywords = new string[] { "up", "below", "left", "right", "stop",
+    public string[] keywords = new string[] { "up", "below", "left", "right", "stop", "switch",
         "turn", "back",
         "shoot"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
@@ -48,8 +48,8 @@ public class SpeechController : MonoBehaviour
         // Else switch MoveStatus accordingly
         switch (args.text)
         {
-            case MoveStatus.Still:
-                controller.UpdateCharacterMoveStatus(MoveStatus.Still);
+            case MoveStatus.Stop:
+                controller.UpdateCharacterMoveStatus(MoveStatus.Stop);
                 break;
             case MoveStatus.Right:
                 controller.UpdateCharacterMoveStatus(MoveStatus.Right);
@@ -62,6 +62,9 @@ public class SpeechController : MonoBehaviour
                 break;
             case MoveStatus.Down:
                 controller.UpdateCharacterMoveStatus(MoveStatus.Down);
+                break;
+            case MoveStatus.Switch:
+                controller.SwitchCharacter();
                 break;
             case Commands.TurnLeft:
                 controller.UpdateCharacterMoveStatus(MoveStatus.TurnLeft);
