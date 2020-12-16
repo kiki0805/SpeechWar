@@ -27,6 +27,7 @@ public class BulletShot : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(bulletDir);   // Spawn bullet at the facing direction of character
         Destroy(gameObject, range);                         // Destroy bullet after a certain time (range)
+        transform.GetComponent<SpriteRenderer>().sortingOrder = 10; // Make bullet spawn above everything else
     }
 
     void Start()
@@ -72,10 +73,8 @@ public class BulletShot : MonoBehaviour
 
             if (character == null) return;
             if (character.dead) return;
-            collisionObject.transform.GetComponent<CharacterBase>().ChangeCharacterHealth(isBullet, power);
+            collisionObject.transform.GetComponent<CharacterBase>().ChangeCharacterHealth(isBullet, power); // Change character health accordingly
             Destroy(gameObject, 0f);
-
-            // Adjust character health accordingly
         }
     }
 

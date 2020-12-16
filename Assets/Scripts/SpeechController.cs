@@ -16,7 +16,6 @@ public class SpeechController : MonoBehaviour
     GameManager gameManager;        // Reference this object
     PlayerManager controller;       // Get controller of active player
 
-    PlayerManager controller;
     // Start is called before the first frame update
     public string[] keywords = new string[] { "up", "below", "left", "right", "stop",
         "turn", "back",

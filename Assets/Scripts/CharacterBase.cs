@@ -22,22 +22,20 @@ public class CharacterBase : MonoBehaviour
     public float rotationSpeed;
     public float range;                             // Indicates after how many seconds the bullet disappears
     public int power;                               // Indicates how much health a bullet takes
-    public int health;                              // Character health
+    public float health = 1.0f;                     // Character health
     public GameManager gameManager;
+
+    public bool dead = false;
 
     Rigidbody2D rb;
     string moveStatus;                              // Used for speech control
     float xDirection, yDirection;
     bool isActive = false;                          // Control which character is active
-    [HideInInspector] public bool mode;             // Input mode, true = moving, false = aiming
+    [HideInInspector] public bool mode;             // Input mode, true = moving, false = aiming ** This is now deprecated
     [SerializeField] private Transform pfBullet;    // Is needed to instantiate bullet objects
     PlayerManager manager;
-    public float health = 1.0f;
-    public bool dead = false;
     SpriteRenderer m_SpriteRenderer;
-    [SerializeField] private Transform pfBullet;    // Is needed to instantiate bullet objects
-    public GameManager gameManager;
-    bool directionMode = true;
+    bool directionMode = true;                      // Used for keyboard control to switch between aiming and moving
 
     /* Setup */
     void Start()
@@ -82,10 +80,10 @@ public class CharacterBase : MonoBehaviour
         Debug.Log("Updated moveStatus to " + moveStatus);
     }
 
-    /* Method to switch between aiming and moving */
+    /* Method to switch between aiming and moving (KEYBOARD CONTROL ONLY) */
     private void SwitchMode()
     {
-        mode = !mode;
+        directionMode = !directionMode;
     }
 
     /* Stop movement (used for speech recognition) */
@@ -102,8 +100,8 @@ public class CharacterBase : MonoBehaviour
     {
         if (!manager.speechInput)   // If speech input not on, move character with keyboard
         {
-            xDirection = Input.GetAxis("Horizontal");
-            yDirection = Input.GetAxis("Vertical");
+            xDirection = Input.GetAxis("Horizontal");       // A,D keys
+            yDirection = Input.GetAxis("Vertical");         // W,S keys
         }
         else
         {
@@ -142,14 +140,6 @@ public class CharacterBase : MonoBehaviour
         rb.velocity = moveDirection * speed;
     }
 
-    public void StopMovement()
-    {
-        xDirection = 0;
-        yDirection = 0;
-        if (rb != null)
-            rb.velocity = new Vector2(0f, 0f);
-    }
-
     void FixedUpdate()
     {
         rb.velocity = new Vector2(xDirection, yDirection);
@@ -184,23 +174,25 @@ public class CharacterBase : MonoBehaviour
     /* Catch-all method that calls the right function depending on what mode we are in */
     public void MoveCharacter()
     {
-        if (!manager.speechInput && directionMode)
+        if (!manager.speechInput && directionMode)  // If keyboard input and directionMode = true
         {
             MoveDirection();
-        } else
+        }
+        else
         {
             MovePosition();
         }
 
+        // For keyboard-input only
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SwitchMode();
         }
-    }
-
-    private void SwitchMode()
-    {
-        directionMode = !directionMode;
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ShootBullet();
+        }
+        
     }
 
     public void ShootBullet()
@@ -211,8 +203,8 @@ public class CharacterBase : MonoBehaviour
         }
         gameManager.EndTurn();
 
-        Vector3 currentPosition = transform.position + (transform.right * (float)0.30); // Spawn bullet in front of character, 1 might be subject to change
-        Transform bulletTransform = Instantiate(pfBullet, currentPosition, Quaternion.identity); // Create new bullet prefab
+        Vector3 currentPosition = transform.position + (transform.right * (float)0.30);             // Spawn bullet in front of character
+        Transform bulletTransform = Instantiate(pfBullet, currentPosition, Quaternion.identity);    // Create new bullet prefab
 
         // Calculate bullet movement direction from knowing z-rotation (magnitude of angle in unit circle)
         float z = transform.localRotation.eulerAngles.z;     // Get rotation around z-axis as Euler angles in degrees
@@ -252,10 +244,5 @@ public class CharacterBase : MonoBehaviour
             return;
         }
         MoveCharacter();
-        if (manager.speechInput) return;
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            ShootBullet();
-        }
     }
 }
