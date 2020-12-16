@@ -39,6 +39,9 @@ public class CharacterBase : MonoBehaviour
     SpriteRenderer m_SpriteRenderer;
     bool directionMode = true;                      // Used for keyboard control to switch between aiming and moving
 
+    Material matWhite;
+    Material matDefault;
+
     /* Setup */
     void Start()
     {
@@ -46,6 +49,8 @@ public class CharacterBase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponentInParent<PlayerManager>();
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        matDefault = m_SpriteRenderer.material;
     }
 
     /* Method for setting character as active */
@@ -238,6 +243,8 @@ public class CharacterBase : MonoBehaviour
         if (isBullet)
         {
             health -= power;
+            m_SpriteRenderer.material = matWhite;
+            Invoke("ResetMaterial", .2f);
             //Debug.Log("Character hit! Health is now: " + health);
         }
         else
@@ -245,12 +252,18 @@ public class CharacterBase : MonoBehaviour
             health += power;
             //Debug.Log("Character healed! Health is now: " + health);
         }
-
+        rb.velocity = Vector3.zero;
+        
         if (health <= 0)
         {
             Die();
             SetInactive();
         }
+    }
+
+    void ResetMaterial()
+    {
+        m_SpriteRenderer.material = matDefault;
     }
 
     void Update()
