@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject player2;
     GameObject activePlayer;
 
-    private const float TIME_PER_ROUND = 120;        // In seconds
+    private const float TIME_PER_ROUND = 60;        // In seconds
     private float time = TIME_PER_ROUND;
     public Text timerDisplay;                       // Reference to timer text object in engine
     public Text playerDisplay;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Method for changing active player
-    private void ChangePlayer()
+    public void ChangePlayer()
     {
         if (activePlayer == player1)
         {
@@ -63,6 +63,12 @@ public class GameManager : MonoBehaviour
             activePlayer = player1;
             playerDisplay.text = "Turn: Player 1";
         }
+
+        if (activePlayer.GetComponent<PlayerManager>().speechInput)
+        {
+            speechController.RefreshController();
+        }
+        Debug.Log("Active player is now: " + activePlayer);
 
         speechController.RefreshController();
     }

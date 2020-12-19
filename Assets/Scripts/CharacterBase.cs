@@ -13,7 +13,6 @@ public static class MoveStatus
     public const string TurnRight = "turn";
     public const string TurnLeft = "back";
     public const string Shoot = "shoot";
-    public const string Switch = "switch";
 }
 
 public class CharacterBase : MonoBehaviour
@@ -85,7 +84,7 @@ public class CharacterBase : MonoBehaviour
     public void UpdateMoveStatus(string status)
     {
         moveStatus = status;
-        Debug.Log("Updated moveStatus to " + moveStatus);
+        //Debug.Log("Updated moveStatus to " + moveStatus);
     }
 
     /* Method to switch between aiming and moving (KEYBOARD CONTROL ONLY) */
@@ -208,7 +207,6 @@ public class CharacterBase : MonoBehaviour
         {
             ShootBullet();
         }
-
     }
 
     public void ShootBullet()

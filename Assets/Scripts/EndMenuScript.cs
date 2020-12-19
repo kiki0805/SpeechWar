@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndMenuScript : MonoBehaviour
 {
     public Text winnerText;
     private string winner;
 
-    // Start is called before the first frame update
+    /* Show winner taken from player prefs */
     void Start()
     {
         winner = PlayerPrefs.GetString("winner");

@@ -8,6 +8,7 @@ public static class Commands
     public const string TurnLeft = "back";
     public const string TurnRight = "turn";
     public const string Shoot = "shoot";
+    public const string Switch = "switch";
 }
 
 public class SpeechController : MonoBehaviour
@@ -64,7 +65,7 @@ public class SpeechController : MonoBehaviour
             case MoveStatus.Down:
                 controller.UpdateCharacterMoveStatus(MoveStatus.Down);
                 break;
-            case MoveStatus.Switch:
+            case Commands.Switch:
                 controller.SwitchCharacter();
                 break;
             case Commands.TurnLeft:
@@ -79,7 +80,7 @@ public class SpeechController : MonoBehaviour
             default:
                 break;
         }
-        //Debug.Log("Keyword result: " + args.text);
+        Debug.Log("Keyword result: " + args.text);
     }
 
     private void OnApplicationQuit()

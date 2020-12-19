@@ -148,15 +148,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f48c2705b2e6a3a4986d8d6fdcf63c23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   gameManager: {fileID: 0}
   characterList:
   - {fileID: 1300711782}
   - {fileID: 1994167505}
   - {fileID: 1299905821}
   - {fileID: 1109516687}
-  speechInput: 1
+  speechInput: 0
 --- !u!4 &163357301
 Transform:
   m_ObjectHideFlags: 0
@@ -210,8 +210,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -227,8 +227,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -1741,14 +1741,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.3
+  m_Name:
+  m_EditorClassIdentifier:
+  speed: 2
   isHealer: 0
-  rotationSpeed: 50
-  range: 5
-  power: 1
-  health: 10
+  rotationSpeed: 60
+  range: 4
+  power: 5
+  health: 15
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2014,14 +2014,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.1
+  m_Name:
+  m_EditorClassIdentifier:
+  speed: 2
   isHealer: 0
-  rotationSpeed: 30
-  range: 5
-  power: 2
-  health: 10
+  rotationSpeed: 60
+  range: 3
+  power: 7
+  health: 20
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2157,8 +2157,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acd4f54d9b7781c4299c7d1162ec59e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   player1: {fileID: 163357299}
   player2: {fileID: 1624152931}
   timerDisplay: {fileID: 1265295796}
@@ -2370,8 +2370,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
@@ -2385,8 +2385,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -2461,14 +2461,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.2
+  m_Name:
+  m_EditorClassIdentifier:
+  speed: 2
   isHealer: 0
-  rotationSpeed: 40
+  rotationSpeed: 60
   range: 5
-  power: 2
-  health: 10
+  power: 5
+  health: 14
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2599,7 +2599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300711782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.31, y: -3.37, z: 0}
+  m_LocalPosition: {x: -10.09, y: -1.67, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 697072108}
@@ -2616,14 +2616,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.3
+  m_Name:
+  m_EditorClassIdentifier:
+  speed: 2
   isHealer: 0
-  rotationSpeed: 50
-  range: 5
-  power: 2
-  health: 10
+  rotationSpeed: 60
+  range: 4
+  power: 5
+  health: 15
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -115574,18 +115574,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
+  m_Name:
+  m_EditorClassIdentifier:
+  speed: 2
   isHealer: 1
   rotationSpeed: 60
   range: 5
-  power: 0
-  health: 10
+  power: 5
+  health: 14
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
-  pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
+  pfBullet: {fileID: 1704834088167798094, guid: 75802db8a77ab614b9a57403af8cc831,
     type: 3}
 --- !u!212 &1488380540
 SpriteRenderer:
@@ -115711,8 +115711,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f48c2705b2e6a3a4986d8d6fdcf63c23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   gameManager: {fileID: 0}
   characterList:
   - {fileID: 737870906}
@@ -115809,8 +115809,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 208ef50dde5c2244695d1a9d12050f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   keywords:
   - up
   - below
@@ -115933,8 +115933,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -115952,8 +115952,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -116025,8 +116025,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
@@ -116040,8 +116040,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 0.7169812, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -116116,14 +116116,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.1
+  m_Name:
+  m_EditorClassIdentifier:
+  speed: 2
   isHealer: 0
-  rotationSpeed: 30
-  range: 5
-  power: 0
-  health: 10
+  rotationSpeed: 60
+  range: 3
+  power: 7
+  health: 20
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -116345,18 +116345,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
+  m_Name:
+  m_EditorClassIdentifier:
+  speed: 2
   isHealer: 1
   rotationSpeed: 60
   range: 5
-  power: 2
-  health: 10
+  power: 5
+  health: 14
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
-  pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
+  pfBullet: {fileID: 1704834088167798094, guid: 75802db8a77ab614b9a57403af8cc831,
     type: 3}
 --- !u!212 &1994167508
 SpriteRenderer:
@@ -116500,14 +116500,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.2
+  m_Name:
+  m_EditorClassIdentifier:
+  speed: 2
   isHealer: 0
-  rotationSpeed: 40
+  rotationSpeed: 60
   range: 5
-  power: 0
-  health: 10
+  power: 5
+  health: 14
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
