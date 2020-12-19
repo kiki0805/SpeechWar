@@ -65,6 +65,7 @@ public class PlayerManager : MonoBehaviour
         {
             gameManager.GetComponent<GameManager>().EndGame();      // Go to end scene
         }
+        Debug.Log("Removed character");
     }
 
     public int GetCharactersAlive()

@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f48c2705b2e6a3a4986d8d6fdcf63c23, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  gameManager: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1175731000}
   characterList:
   - {fileID: 1300711782}
   - {fileID: 1994167505}
@@ -210,8 +210,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -227,8 +227,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -1741,16 +1741,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 2
   isHealer: 0
   rotationSpeed: 60
   range: 4
   power: 5
-  health: 15
+  startingHealth: 15
   gameManager: {fileID: 1175731000}
   dead: 0
+  health: 15
   mode: 0
   pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
     type: 3}
@@ -2014,16 +2015,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 2
   isHealer: 0
   rotationSpeed: 60
   range: 3
   power: 7
-  health: 20
+  startingHealth: 20
   gameManager: {fileID: 1175731000}
   dead: 0
+  health: 21
   mode: 0
   pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
     type: 3}
@@ -2157,8 +2159,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acd4f54d9b7781c4299c7d1162ec59e9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player1: {fileID: 163357299}
   player2: {fileID: 1624152931}
   timerDisplay: {fileID: 1265295796}
@@ -2263,12 +2265,12 @@ PrefabInstance:
     - target: {fileID: 3561950037119641432, guid: 41de280aa951cf04fb71f8d0284238e4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1
+      value: -0.099999905
       objectReference: {fileID: 0}
     - target: {fileID: 3561950037119641432, guid: 41de280aa951cf04fb71f8d0284238e4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.63
+      value: 0.6300002
       objectReference: {fileID: 0}
     - target: {fileID: 3561950037119641432, guid: 41de280aa951cf04fb71f8d0284238e4,
         type: 3}
@@ -2315,10 +2317,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3561950037119641432, guid: 41de280aa951cf04fb71f8d0284238e4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8307282
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561950037119641432, guid: 41de280aa951cf04fb71f8d0284238e4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.19643903
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561950037119641432, guid: 41de280aa951cf04fb71f8d0284238e4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4985173148809324951, guid: 41de280aa951cf04fb71f8d0284238e4,
         type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974777312359602877, guid: 41de280aa951cf04fb71f8d0284238e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41de280aa951cf04fb71f8d0284238e4, type: 3}
@@ -2370,8 +2392,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
@@ -2385,8 +2407,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -2461,16 +2483,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 2
   isHealer: 0
   rotationSpeed: 60
   range: 5
-  power: 5
-  health: 14
+  power: 6
+  startingHealth: 13
   gameManager: {fileID: 1175731000}
   dead: 0
+  health: 13
   mode: 0
   pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
     type: 3}
@@ -2599,7 +2622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300711782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.09, y: -1.67, z: 0}
+  m_LocalPosition: {x: -10.11, y: -0.48, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 697072108}
@@ -2616,16 +2639,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 2
   isHealer: 0
   rotationSpeed: 60
   range: 4
   power: 5
-  health: 15
+  startingHealth: 15
   gameManager: {fileID: 1175731000}
   dead: 0
+  health: 15
   mode: 0
   pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
     type: 3}
@@ -115574,16 +115598,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 2
   isHealer: 1
   rotationSpeed: 60
   range: 5
   power: 5
-  health: 14
+  startingHealth: 10
   gameManager: {fileID: 1175731000}
   dead: 0
+  health: 13
   mode: 0
   pfBullet: {fileID: 1704834088167798094, guid: 75802db8a77ab614b9a57403af8cc831,
     type: 3}
@@ -115711,9 +115736,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f48c2705b2e6a3a4986d8d6fdcf63c23, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  gameManager: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1175731000}
   characterList:
   - {fileID: 737870906}
   - {fileID: 1488380537}
@@ -115809,18 +115834,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 208ef50dde5c2244695d1a9d12050f18, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   keywords:
   - up
   - below
   - left
   - right
   - stop
+  - switch
   - turn
   - back
   - shoot
-  - switch
+  - pass
   confidence: 2
 --- !u!4 &1664233139
 Transform:
@@ -115933,8 +115959,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -115952,8 +115978,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -116025,8 +116051,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
@@ -116040,8 +116066,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.7169812, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
@@ -116116,16 +116142,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 2
   isHealer: 0
   rotationSpeed: 60
   range: 3
   power: 7
-  health: 20
+  startingHealth: 20
   gameManager: {fileID: 1175731000}
   dead: 0
+  health: 21
   mode: 0
   pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
     type: 3}
@@ -116345,16 +116372,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 2
   isHealer: 1
   rotationSpeed: 60
   range: 5
   power: 5
-  health: 14
+  startingHealth: 10
   gameManager: {fileID: 1175731000}
   dead: 0
+  health: 13
   mode: 0
   pfBullet: {fileID: 1704834088167798094, guid: 75802db8a77ab614b9a57403af8cc831,
     type: 3}
@@ -116500,16 +116528,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   speed: 2
   isHealer: 0
   rotationSpeed: 60
   range: 5
-  power: 5
-  health: 14
+  power: 6
+  startingHealth: 13
   gameManager: {fileID: 1175731000}
   dead: 0
+  health: 13
   mode: 0
   pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
     type: 3}
