@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
             speechController.RefreshController();
         }
         Debug.Log("Active player is now: " + activePlayer);
+
+        speechController.RefreshController();
     }
 
     // Method for counting down and displaying it on screen

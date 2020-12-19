@@ -1,6 +1,12 @@
 # Speech War
 Speech War: A multiplayer game played through speech
 
+## Info
+* Active character is highlighted in red
+* One healer per team
+* Friendly fire on (for now)
+* Defeat other player team by shooting
+
 ## Control in Speech Mode
 
 * `right` to move rightwards (continuous)
@@ -12,6 +18,13 @@ Speech War: A multiplayer game played through speech
 * `back` to turn anticlockwise (continuous)
 * `stop` to stop movement and turning
 * `shoot` to shoot a bullet
+
+## Control in Keyboard mode
+* WASD keys to move
+* Space to change between moving and aiming
+* AD keys to aim
+* Enter key to shoot
+* Tab key to switch character
 
 ## CODING
 ### Coding style

@@ -48,7 +48,7 @@ public class CharacterBase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponentInParent<PlayerManager>();
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
-        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        matWhite = Resources.Load("WhiteFlash.mat", typeof(Material)) as Material;
         matDefault = m_SpriteRenderer.material;
     }
 
@@ -151,18 +151,12 @@ public class CharacterBase : MonoBehaviour
 
     public void TurnLeft()
     {
-        //if (!manager.speechInput)
-            transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-        //else
-        //    transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime * 100);
+        transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
     }
 
     public void TurnRight()
     {
-        //if (!manager.speechInput)
-            transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
-        //else
-        //    transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime * 100);
+        transform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
     }
     // Move direction on the map
     private void MoveDirection()

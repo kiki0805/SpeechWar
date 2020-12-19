@@ -30,6 +30,7 @@ public class SpeechController : MonoBehaviour
         recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
         recognizer.Start();
         gameManager = GetComponentInParent<GameManager>();
+        Debug.Log("Start speechcontroller");
     }
 
     /* Get PlayerManager-script of active player*/
@@ -69,11 +70,9 @@ public class SpeechController : MonoBehaviour
                 break;
             case Commands.TurnLeft:
                 controller.UpdateCharacterMoveStatus(MoveStatus.TurnLeft);
-                //controller.GetActiveCharacter().TurnLeft();
                 break;
             case Commands.TurnRight:
                 controller.UpdateCharacterMoveStatus(MoveStatus.TurnRight);
-                //controller.GetActiveCharacter().TurnRight();
                 break;
             case Commands.Shoot:
                 controller.GetActiveCharacter().ShootBullet();
