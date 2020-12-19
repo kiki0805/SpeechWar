@@ -272,6 +272,11 @@ public class CharacterBase : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
+    public float GetHealth()
+    {
+        return health;
+    }
+
     void ResetMaterial()
     {
         m_SpriteRenderer.material = matDefault;

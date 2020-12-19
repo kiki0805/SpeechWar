@@ -5,6 +5,8 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     Vector3 localScale;
+    Vector3 startPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +18,9 @@ public class HealthBar : MonoBehaviour
     {
         localScale.x = GetComponentInParent<CharacterBase>().health / 5;
         transform.localScale = localScale;
+
+        // Fixed rotation of healthbar
+        transform.rotation = Quaternion.Euler(Vector3.zero);    // No rotation
+        transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y + (float)0.3, transform.parent.position.z); // Fixed position
     }
 }
