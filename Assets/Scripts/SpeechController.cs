@@ -9,6 +9,7 @@ public static class Commands
     public const string TurnRight = "turn";
     public const string Shoot = "shoot";
     public const string Switch = "switch";
+    public const string Pass = "pass";
 }
 
 public class SpeechController : MonoBehaviour
@@ -19,7 +20,7 @@ public class SpeechController : MonoBehaviour
     // Start is called before the first frame update
     public string[] keywords = new string[] { "up", "below", "left", "right", "stop", "switch",
         "turn", "back",
-        "shoot"};
+        "shoot", "pass"};
     public ConfidenceLevel confidence = ConfidenceLevel.Low;
     private KeywordRecognizer recognizer;
 
@@ -76,6 +77,9 @@ public class SpeechController : MonoBehaviour
                 break;
             case Commands.Shoot:
                 controller.GetActiveCharacter().ShootBullet();
+                break;
+            case Commands.Pass:
+                gameManager.ChangePlayer();
                 break;
             default:
                 break;

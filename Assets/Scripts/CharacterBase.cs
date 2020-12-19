@@ -23,11 +23,12 @@ public class CharacterBase : MonoBehaviour
     public float rotationSpeed;
     public float range;                             // Indicates after how many seconds the bullet disappears
     public int power;                               // Indicates how much health a bullet takes
-    public float health = 1.0f;                     // Character health
+    public float startingHealth;                    // Character starting health
     public GameManager gameManager;
 
     public bool dead = false;
 
+    public float health;                                   // Update health
     Rigidbody2D rb;
     string moveStatus;                              // Used for speech control
     float xDirection, yDirection;
@@ -44,6 +45,7 @@ public class CharacterBase : MonoBehaviour
     /* Setup */
     void Start()
     {
+        health = startingHealth;
         moveStatus = MoveStatus.Stop;
         rb = GetComponent<Rigidbody2D>();
         manager = GetComponentInParent<PlayerManager>();
@@ -207,6 +209,11 @@ public class CharacterBase : MonoBehaviour
         {
             ShootBullet();
         }
+        else if (Input.GetKeyDown(KeyCode.Escape)) // Skip turn
+        {
+            Input.ResetInputAxes();
+            gameManager.ChangePlayer();
+        }
     }
 
     public void ShootBullet()
@@ -236,23 +243,33 @@ public class CharacterBase : MonoBehaviour
 
         if (isBullet)
         {
-            health -= power;
-            m_SpriteRenderer.material = matWhite;
-            Invoke("ResetMaterial", .2f);
-            //Debug.Log("Character hit! Health is now: " + health);
+            if((health -= power) <= 0)
+            {
+                Die();
+                SetInactive();
+                //Debug.Log("Character died! Health is now: " + health);
+            }
+            else
+            {
+                health -= power;
+                m_SpriteRenderer.material = matWhite;
+                Invoke("ResetMaterial", .2f);
+                //Debug.Log("Character hit! Health is now: " + health);
+            }
         }
         else
         {
-            health += power;
+            if((health += power) >= startingHealth)
+            {
+                health = startingHealth;
+            }
+            else
+            {
+                health += power;
+            }
             //Debug.Log("Character healed! Health is now: " + health);
         }
         rb.velocity = Vector3.zero;
-        
-        if (health <= 0)
-        {
-            Die();
-            SetInactive();
-        }
     }
 
     void ResetMaterial()
