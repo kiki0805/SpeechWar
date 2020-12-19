@@ -156,7 +156,7 @@ MonoBehaviour:
   - {fileID: 1994167505}
   - {fileID: 1299905821}
   - {fileID: 1109516687}
-  speechInput: 1
+  speechInput: 0
 --- !u!4 &163357301
 Transform:
   m_ObjectHideFlags: 0
@@ -1743,12 +1743,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  speed: 2
   isHealer: 0
-  rotationSpeed: 50
-  range: 5
-  power: 1
-  health: 1
+  rotationSpeed: 60
+  range: 4
+  power: 5
+  health: 15
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2016,12 +2016,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 2
   isHealer: 0
-  rotationSpeed: 30
-  range: 5
-  power: 2
-  health: 1
+  rotationSpeed: 60
+  range: 3
+  power: 7
+  health: 20
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2463,12 +2463,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 2
   isHealer: 0
-  rotationSpeed: 40
+  rotationSpeed: 60
   range: 5
-  power: 2
-  health: 1
+  power: 5
+  health: 14
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -2599,7 +2599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300711782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: -4.48, z: 0}
+  m_LocalPosition: {x: -10.09, y: -1.67, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 697072108}
@@ -2618,12 +2618,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  speed: 2
   isHealer: 0
-  rotationSpeed: 50
-  range: 5
-  power: 2
-  health: 1
+  rotationSpeed: 60
+  range: 4
+  power: 5
+  health: 15
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -115576,16 +115576,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 2
   isHealer: 1
   rotationSpeed: 60
   range: 5
-  power: 0
-  health: 1
+  power: 5
+  health: 14
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
-  pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
+  pfBullet: {fileID: 1704834088167798094, guid: 75802db8a77ab614b9a57403af8cc831,
     type: 3}
 --- !u!212 &1488380540
 SpriteRenderer:
@@ -116118,12 +116118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 2
   isHealer: 0
-  rotationSpeed: 30
-  range: 5
-  power: 0
-  health: 1
+  rotationSpeed: 60
+  range: 3
+  power: 7
+  health: 20
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
@@ -116347,16 +116347,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 2
   isHealer: 1
   rotationSpeed: 60
   range: 5
-  power: 2
-  health: 1
+  power: 5
+  health: 14
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
-  pfBullet: {fileID: 6239515038580426545, guid: 06282c6d5e56a0447bd834a67883c43e,
+  pfBullet: {fileID: 1704834088167798094, guid: 75802db8a77ab614b9a57403af8cc831,
     type: 3}
 --- !u!212 &1994167508
 SpriteRenderer:
@@ -116502,12 +116502,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 2
   isHealer: 0
-  rotationSpeed: 40
+  rotationSpeed: 60
   range: 5
-  power: 0
-  health: 1
+  power: 5
+  health: 14
   gameManager: {fileID: 1175731000}
   dead: 0
   mode: 0
