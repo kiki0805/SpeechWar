@@ -53,12 +53,6 @@ public class CharacterBase : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         matWhite = Resources.Load("WhiteFlash.mat", typeof(Material)) as Material;
         matDefault = m_SpriteRenderer.material;
-
-        if (manager.speechInput) // To get more control during speech
-        {
-            speed = 1;
-            rotationSpeed = 50;
-        }
     }
 
     /* Method for setting character as active */

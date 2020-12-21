@@ -2882,9 +2882,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   isHealer: 0
-  rotationSpeed: 60
+  rotationSpeed: 50
   range: 4
   power: 5
   startingHealth: 16
@@ -3119,9 +3119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   isHealer: 0
-  rotationSpeed: 60
+  rotationSpeed: 50
   range: 3
   power: 7
   startingHealth: 21
@@ -3494,9 +3494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   isHealer: 0
-  rotationSpeed: 60
+  rotationSpeed: 50
   range: 5
   power: 6
   startingHealth: 13
@@ -3650,9 +3650,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   isHealer: 0
-  rotationSpeed: 60
+  rotationSpeed: 50
   range: 4
   power: 5
   startingHealth: 16
@@ -41270,9 +41270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   isHealer: 1
-  rotationSpeed: 60
+  rotationSpeed: 50
   range: 5
   power: 5
   startingHealth: 11
@@ -41913,9 +41913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   isHealer: 0
-  rotationSpeed: 60
+  rotationSpeed: 50
   range: 3
   power: 7
   startingHealth: 21
@@ -42237,9 +42237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   isHealer: 1
-  rotationSpeed: 60
+  rotationSpeed: 50
   range: 5
   power: 5
   startingHealth: 11
@@ -42430,9 +42430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ca87f83f14c9a4cbec1a767460605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   isHealer: 0
-  rotationSpeed: 60
+  rotationSpeed: 50
   range: 5
   power: 6
   startingHealth: 13
