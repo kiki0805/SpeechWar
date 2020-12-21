@@ -15,17 +15,20 @@ public class GameManager : MonoBehaviour
     private float time = TIME_PER_ROUND;
     public Text timerDisplay;                       // Reference to timer text object in engine
     public Text playerDisplay;
+    public Text timerExtraDisplay;
     SpeechController speechController;
     Coroutine lastRoutine;
 
     /* Setup */
     void Start()
     {
+        timerExtraDisplay.text = "Time: ";
+
         // Start with Player 1
         player1.GetComponent<PlayerManager>().SetActive();
         player2.GetComponent<PlayerManager>().SetInactive();
         activePlayer = player1;
-        playerDisplay.text = "Turn: Player 1";
+        playerDisplay.text = "Now playing: Player 1";
 
         // Set up speech controller(s)
         player1.GetComponent<PlayerManager>().SetSpeechInput(PlayerPrefs.GetInt("player1"));
@@ -54,21 +57,21 @@ public class GameManager : MonoBehaviour
             player1.GetComponent<PlayerManager>().SetInactive();
             player2.GetComponent<PlayerManager>().SetActive();
             activePlayer = player2;
-            playerDisplay.text = "Turn: Player 2";
+            playerDisplay.text = "Now playing: Player 2";
         }
         else
         {
             player1.GetComponent<PlayerManager>().SetActive();
             player2.GetComponent<PlayerManager>().SetInactive();
             activePlayer = player1;
-            playerDisplay.text = "Turn: Player 1";
+            playerDisplay.text = "Now playing: Player 1";
         }
 
         if (activePlayer.GetComponent<PlayerManager>().speechInput)
         {
             speechController.RefreshController();
         }
-        Debug.Log("Active player is now: " + activePlayer);
+        //Debug.Log("Active player is now: " + activePlayer);
 
         speechController.RefreshController();
     }
@@ -91,7 +94,9 @@ public class GameManager : MonoBehaviour
     public void EndTurn()
     {
         StopCoroutine(lastRoutine);
-        timerDisplay.text = "Waiting";
+        timerExtraDisplay.text = "";
+        timerDisplay.text = "Waiting...";
+        playerDisplay.text = "";
 
         // Inactivate activePlayer
         activePlayer.GetComponent<PlayerManager>().SetInactive();
@@ -102,6 +107,7 @@ public class GameManager : MonoBehaviour
     {
         ChangePlayer();
         time = TIME_PER_ROUND;
+        timerExtraDisplay.text = "Time: ";
         lastRoutine = StartCoroutine(CountdownRoundTimer());
     }
 

@@ -5,18 +5,27 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     Vector3 localScale;
-    Vector3 startPosition;
+    CharacterBase character;
 
     // Start is called before the first frame update
     void Start()
     {
         localScale = transform.localScale;
+        character = GetComponentInParent<CharacterBase>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        localScale.x = GetComponentInParent<CharacterBase>().health / 5;
+        if(character.health <= 0)
+        {
+            localScale.x = 0;
+        }
+        else
+        {
+            localScale.x = character.health / 5;
+        }
+
         transform.localScale = localScale;
 
         // Fixed rotation of healthbar
