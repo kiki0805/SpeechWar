@@ -216,7 +216,7 @@ public class CharacterBase : MonoBehaviour
         {
             ShootBullet();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape)) // Skip turn
+        else if (Input.GetKeyDown(KeyCode.Backspace)) // Skip turn
         {
             Input.ResetInputAxes();
             gameManager.ChangePlayer();
@@ -298,12 +298,9 @@ public class CharacterBase : MonoBehaviour
         MoveCharacter();
 
         // Quit game wtih ctrl+X while playing
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                SceneManager.LoadScene("MainMenu");
-            }
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
