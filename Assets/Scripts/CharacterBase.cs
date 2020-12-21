@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* Separate class for speech input */
 public static class MoveStatus
@@ -52,6 +53,12 @@ public class CharacterBase : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         matWhite = Resources.Load("WhiteFlash.mat", typeof(Material)) as Material;
         matDefault = m_SpriteRenderer.material;
+
+        if (manager.speechInput) // To get more control during speech
+        {
+            speed = 1;
+            rotationSpeed = 50;
+        }
     }
 
     /* Method for setting character as active */
@@ -289,5 +296,14 @@ public class CharacterBase : MonoBehaviour
             return;
         }
         MoveCharacter();
+
+        // Quit game wtih ctrl+X while playing
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 }
