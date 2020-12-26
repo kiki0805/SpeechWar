@@ -39,6 +39,10 @@ public class PlayerManager : MonoBehaviour
         characterList[activeCharacter].GetComponent<CharacterBase>().SetInactive();
         activeCharacter = (activeCharacter + 1) % 4;
         characterList[activeCharacter].GetComponent<CharacterBase>().SetActive();
+        if (characterList[activeCharacter].GetComponent<CharacterBase>().dead)
+        {
+            SwitchCharacter();
+        }
     }
 
     public CharacterBase GetActiveCharacter()
@@ -50,6 +54,10 @@ public class PlayerManager : MonoBehaviour
     {
         isActive = true;
         characterList[activeCharacter].GetComponent<CharacterBase>().SetActive();
+        if (characterList[activeCharacter].GetComponent<CharacterBase>().dead)
+        {
+            SwitchCharacter();
+        }
     }
 
     public void SetInactive()
