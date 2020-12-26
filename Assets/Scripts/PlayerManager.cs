@@ -82,7 +82,7 @@ public class PlayerManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && isActive)
+        if (Input.GetKeyDown(KeyCode.Tab) && isActive && !speechInput)
         {
             SwitchCharacter();
         }
