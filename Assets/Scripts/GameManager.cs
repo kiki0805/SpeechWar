@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         playerDisplay.text = "Turn: Player 1";
 
         // Set up speech controller(s)
-        player1.GetComponent<PlayerManager>().SetSpeechInput(PlayerPrefs.GetInt("player1"));
-        player2.GetComponent<PlayerManager>().SetSpeechInput(PlayerPrefs.GetInt("player2"));
+        player1.GetComponent<PlayerManager>().SetSpeechInput(PlayerPrefs.GetInt("player1", 0));
+        player2.GetComponent<PlayerManager>().SetSpeechInput(PlayerPrefs.GetInt("player2", 0));
 
         speechController = GetComponentInChildren<SpeechController>();
         speechController.RefreshController();

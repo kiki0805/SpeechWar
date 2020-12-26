@@ -243,15 +243,16 @@ public class CharacterBase : MonoBehaviour
 
         if (isBullet)
         {
-            if((health -= power) <= 0)
+            health -= power;
+            if (health <= 0)
             {
+                health = 0;
                 Die();
                 SetInactive();
                 //Debug.Log("Character died! Health is now: " + health);
             }
             else
             {
-                health -= power;
                 m_SpriteRenderer.material = matWhite;
                 Invoke("ResetMaterial", .2f);
                 //Debug.Log("Character hit! Health is now: " + health);
@@ -259,13 +260,10 @@ public class CharacterBase : MonoBehaviour
         }
         else
         {
-            if((health += power) >= startingHealth)
+            health += power;
+            if (health >= startingHealth)
             {
                 health = startingHealth;
-            }
-            else
-            {
-                health += power;
             }
             //Debug.Log("Character healed! Health is now: " + health);
         }
