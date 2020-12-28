@@ -36,6 +36,10 @@ public class PlayerManager : MonoBehaviour
 
     public void SwitchCharacter()
     {
+        if (charactersAlive <= 0)
+        {
+            return;
+        }
         characterList[activeCharacter].GetComponent<CharacterBase>().SetInactive();
         activeCharacter = (activeCharacter + 1) % 4;
         characterList[activeCharacter].GetComponent<CharacterBase>().SetActive();

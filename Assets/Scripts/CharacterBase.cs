@@ -101,7 +101,7 @@ public class CharacterBase : MonoBehaviour
     {
         xDirection = 0;
         yDirection = 0;
-        if (rb != null)
+        if (rb != null && !dead)
         {
             rb.velocity = Vector3.zero;
         }

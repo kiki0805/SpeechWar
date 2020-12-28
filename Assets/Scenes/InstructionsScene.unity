@@ -3334,7 +3334,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\"Up\"\t\t\t\tUp movement\n\n\"Below\"\t\tDown movement\n\n\"Left\"\t\t\tLeft
     movement\n\n\"Right\"\t\t\tRight movement\n\n\"Shoot\"\t\tShoot bullet\n\n\"Switch\"\t\tSwitch
-    character\n\n\"Turn\"\t\t\tTurn clockwise\n\n\"Back\"\t\t\tTurn anti-clockwise\n\n\"Skip\"\t\t\tSkip
+    character\n\n\"Turn\"\t\t\tTurn clockwise\n\n\"Back\"\t\t\tTurn anti-clockwise\n\n\"Pass\"\t\t\tSkip
     turn"
 --- !u!222 &1750770729
 CanvasRenderer:
