@@ -49,3 +49,4 @@ Speech War: A multiplayer game played through speech
 Links to other places the project is present
 * Google Drive: https://drive.google.com/drive/folders/11y3kaNwHVnn7ZcgUebi9KYvTdoDsGGRa?usp=sharing
 * Trello: https://trello.com/b/uH87Bf4A/dt2140-project
+* Demo: https://vimeo.com/500989169
